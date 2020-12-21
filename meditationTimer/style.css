@@ -1,0 +1,30 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 95vh;
+}
+
+#timer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  height: 350px;
+  width: 350px;
+  border-radius: 50%;
+  background: linear-gradient(270deg, blue 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, lightgray 50%);
+}
+
+#center {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-color: #fff;
+}
