@@ -7,6 +7,7 @@ let propertiesObj = {
 
 window.onload = init;
 const formcontainer = document.getElementById("formcontainer");
+const resultBox = document.getElementById('resultBox');
 
 function init() {
     
@@ -28,13 +29,20 @@ function createRadioGroup(prop) {
         input.value = value;
         input.name = prop;
         input.id = prop + value;
+        let that = value;
+        input.addEventListener('click', () => {
+            console.log(prop, that)
+            resultBox.style[prop] = that;
+        })
         let label = document.createElement('label');
         label.for = prop + value;
         label.textContent = value;
         fieldset.appendChild(input);
         fieldset.appendChild(label);
+        
     }
     div.appendChild(p);
     div.appendChild(fieldset);
     formcontainer.appendChild(div);
 }
+
