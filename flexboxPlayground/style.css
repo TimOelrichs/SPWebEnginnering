@@ -47,3 +47,11 @@ fieldset input {
   border: 0px;
   right: 5px;
 }
+
+#headercontainer {
+  display: flex;
+}
+#cssText {
+  width: 40vw;
+  border: solid 1px grey;
+}

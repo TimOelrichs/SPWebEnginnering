@@ -13,6 +13,7 @@ const resultBox = document.getElementById('resultBox');
 const widthrange = document.getElementById('widthRange');
 const addBtn = document.getElementById('addBtn') 
 const rangeLabel = document.getElementById('rangeLabel');
+const cssText = document.getElementById('cssText');
 var sampleCounter = 0;
 
 function init() {
