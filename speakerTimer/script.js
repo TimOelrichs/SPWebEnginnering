@@ -10,7 +10,8 @@ window.onload = () => {
 }
 
 function addRedner(){
-    let li = document.createElement("li");
+    let card = document.createElement("div");
+        card.classList.add("card");
         let txt = document.getElementById('txtInput');
         let name = txt.value.trim();
         if(!name) return false;
@@ -18,8 +19,8 @@ function addRedner(){
         txt.value = "";
         redner[id] = {name, elapsedTime: 0};
         
-        li.innerHTML = `${name}\t<span id="t${id}">0</span> Sek.\t<button id="b${id}"">Start</button>`
-        document.getElementById("liste").appendChild(li);
+        card.innerHTML = `${name}\t<span id="t${id}">0</span> Sek.\t<button id="b${id}"">Start</button>`
+        document.getElementById("liste").appendChild(card);
         let btn = document.getElementById(`b${id}`);
         btn.addEventListener('click', () => startHandler(id))
 }
@@ -55,10 +56,14 @@ function timer(id){
     let r = redner[id];
     let d = Date.now();
     if(r.startTime){
-        r.current = ((d-r.startTime)) / 1000 + r.elapsedTime;
+        //r.current = ((d - r.startTime)) / 1000 + r.elapsedTime;
+        r.current = ((d - r.startTime)) + r.elapsedTime;
     }else{
         r.startTime = d;
         r.current = r.elapsedTime;
     }
-    document.getElementById(`t${id}`).innerText = r.current;
+    //document.getElementById(`t${id}`).innerText = r.current;
+
+    document.getElementById(`t${id}`).innerText = new Date(r.current).toUTCString().split("1970")[1].split("GMT")[0];r.current;
+    
 }
