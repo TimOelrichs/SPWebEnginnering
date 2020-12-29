@@ -17,12 +17,13 @@ function init() {
 }
 
 function clickHandlerStart() {
-    if(!resume) endTime = Date.now() + minuten * 60000;
+    if(!resume) endTime = Date.now() + 5000; //(minuten * 60000);
     timerID = setInterval(() => {
-        let seconds = endTime - Date.now();
-        timeBox.textContent = new Date(seconds).toUTCString().split("1970")[1].split("GMT")[0];
-        percent = endTime * seconds / 100_000_000 ;
-        console.log(percent)
+        let milliseconds = endTime - Date.now();
+        if (milliseconds < 0) { clickHandlerStop(); timeBox.textContent = "Ring Ring"; return}
+        timeBox.textContent = new Date(milliseconds).toUTCString().split("1970")[1].split("GMT")[0];
+        percent = (5000 * milliseconds / 100);
+        console.log(milliseconds)
     }, 300)
     startBtn.textContent = "Stop"
     startBtn.removeEventListener('click', clickHandlerStart )
