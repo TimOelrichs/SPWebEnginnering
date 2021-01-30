@@ -43,12 +43,16 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
         <a>Contact</a>
     </footer>
     <script>
-        let json;
         async function getData() {
-            let data = await fetch("./data.json")
-            return await data.json();
+            let json = <?PHP
+                        $file = "../data/data.json";
+                        $contents = file_get_contents($file);
+                        $json = json_decode($contents, true);
+                        echo json_encode($json)
+                        ?>;
+            //let data = await fetch("./content.php")
+            return json;
         }
-
 
         async function init() {
             try {

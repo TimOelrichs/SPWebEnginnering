@@ -43,6 +43,7 @@
             <input type="submit" value="Submit">
         </fieldset>
     </form>
+    <a href="register.php">Registrieren</a>
     <script>
         errors = {};
 
