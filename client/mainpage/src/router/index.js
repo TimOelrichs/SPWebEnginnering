@@ -20,7 +20,6 @@ const routes = [
         path: 'portfolio',
         component: Portfolio
       },
-
     ]
   },
   {
