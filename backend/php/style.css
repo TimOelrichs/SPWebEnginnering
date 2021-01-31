@@ -4,6 +4,18 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+#edit {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  bottom: 50px;
+  right: 20px;
+  border-radius: 50%;
+  background-color: brown;
+  text-align: center;
+  align-content: center;
+}
+
 #mainnav {
   display: flex;
   list-style: none;

@@ -16,8 +16,9 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
 ?>
 
 <body>
+    <a href="editor.php" id="edit">Edit</a>
     <header>
-        <h1>WWW-Navigator</h1>
+        <h1>WWW-Navigator</h1> Hallo, <?php echo $_SESSION['user'] ?>
         <nav>
             <ul id="mainnav"></ul>
         </nav>

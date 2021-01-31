@@ -1,4 +1,3 @@
-<!doctype html>
 <?php
 session_start();
 if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
@@ -6,46 +5,86 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     exit;
 }
 ?>
-<h1>Fill with contents</h1>
+
+<!doctype html>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
+    * {
+        margin: 0;
+    }
+
+    #form {
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        padding: 20px;
+    }
+
     textarea {
-        margin: 1rem;
+        margin: 0 0 5px;
         display: block;
         width: 80vw;
         height: 20vh;
+        padding: 20px;
     }
 
     input {
         height: 20px;
-        margin: 1rem;
+
     }
 
     select {
         height: 20px;
-        width: 100px;
+        width: 150px;
     }
 
     label {
         padding: 5px;
-        width: 150px;
+        width: 300px;
+    }
+
+    header {
+        margin: 0;
+        padding: 5px;
+        height: 40px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+
+    #textareaHeader {
+        display: flex;
+        justify-content: space-between;
     }
 </style>
-
+<header>
+    <h1>Content Editor</h1>
+</header>
 <div id="form">
     <legend>Select content area and add a new text:</legend>
-    <select name="top_header">
-    </select>
-    <label for="newheader">Neue Kategorie:</label>
-    <input type="text" name="newheader" id="newHeader"><button onclick="addHeader()">+</button>
-    <br>
-    <select name="sub_header">
-    </select>
-    <label for="newsubheader">Neue Unterkategorie:</label>
-    <input type="text" name="newsubheader" id="newSubHeader">
-    <button onclick="addSubHeader()">+</button>
+    <div>
+        <select name="top_header">
+        </select>
+        <label for="newheader">Neue Kategorie:</label>
+        <input type="text" name="newheader" id="newHeader"><button onclick="addHeader()">+</button>
+    </div>
+    <div>
+        <select name="sub_header">
+        </select>
+        <label for="newsubheader">Neue Unterkategorie:</label>
+        <input type="text" name="newsubheader" id="newSubHeader">
+        <button onclick="addSubHeader()">+</button>
+    </div>
+    <div id="textareaHeader">
+        <p>Content hinzufügen:</p>
+        <button onclick="preview()"><i class="material-icons">preview</i>Vorschau</button>
+    </div>
     <textarea name="content"></textarea>
+    <div>
+        <p>Referenzen hinzufügen:</p>
+    </div>
     <textarea name="references"></textarea>
-    <input type="submit" value="Submit" id="submit">
+    <input type="submit" value="Submit" id="submit"><i class="material-icons">publish</i></input>
 </div>
 
 <?PHP
@@ -80,23 +119,19 @@ $json = json_decode($contents, true);
 
         submit.addEventListener('click', (event) => {
             event.preventDefault();
-            fetch(new Request("./server.php"), {
+            fetch(new Request("./editor.php"), {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-store',
-                body: JSON.stringify(Array.from(document.querySelectorAll('.form'))
-                    .reduce((json, input_field) => {
-                        json[input_field.id] = input_field.value;
-                        return json
-                    }, {})),
+                body: json
+            }, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-        }); <
-        /
-    })
-    }
+        });
+    };
+
 
 
     function updateSubheaders(header) {
@@ -120,17 +155,20 @@ $json = json_decode($contents, true);
         option.value = value;
         option.innerText = value;
         top_header.append(option);
-        console.log(top_header)
+        top_header.value = value;
+        updateSubheaders(value);
     }
 
     function addSubHeader() {
         const option = document.createElement('option');
-        option.value = txt_NewSubHeader.value;
-        option.innerText = txt_NewSubHeader.value;
+        let value = txt_NewSubHeader.value
+        option.value = value;
+        option.innerText = value;
         sub_header.append(option);
-        json[top_header.value][txt_NewSubHeader.value] = {};
+        json[top_header.value][value] = {};
         updateSubheaders(top_header.value);
         txt_NewSubHeader.value = "";
+        sub_header.value = value;
     }
 </script>
 <?PHP

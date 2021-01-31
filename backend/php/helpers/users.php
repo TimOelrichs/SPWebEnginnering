@@ -1,10 +1,10 @@
 <?php
 
-include "./salter.php";
+require "salter.php";
 
 function userExists($data)
 {
-    $file = '../data/raw_passwd.csv';
+    $file = '../../data/raw_passwd.csv';
     $lines = file($file);
     foreach ($lines as $line_num => $line) {
         list($user, $passwd) = explode(",", $line);
