@@ -6,26 +6,33 @@
       <div> 
           <p>Vorlesungseinheit: {{solution.unit}}</p>
       </div>
-      <router-link v-bind:to="solution.routerlink">Lösung anzeigen</router-link>
+      <button @click="goTo(solution.routerlink)">Zur Lösung</button>
+      <router-link v-bind:to="'solution/' + solution.routerlink">Lösung anzeigen</router-link>
   </div>
   
 </template>
 
 <script>
+//import router from "../router"; 
 export default {
 props: {
   solution: Object,
+},
+methods:{
+  goTo: (url) => {location.href(url)}
 }
+
 }
 </script>
 
 <style>
-  .card{
+  .card{ /* card design from https://codepen.io/sdthornton/pen/wBZdXq */ 
+    display: inline-block;
+    border-radius: 2px;
     height: 200px;
     width: 200px;
-    border: 1px solid grey;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    margin: 10px;
+    margin: 1rem;
   }
   .card:hover{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);

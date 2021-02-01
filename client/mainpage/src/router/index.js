@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import LandingPage from '../components/LandingPage.vue'
 import Portfolio  from '../components/Portfolio.vue'
+import Impressum from '../components/Impressum.vue'
+import Solution from '../components/Solution.vue'
 
 Vue.use(VueRouter)
 
@@ -20,7 +22,16 @@ const routes = [
         path: 'portfolio',
         component: Portfolio
       },
+      {
+        path: 'impressum',
+        component: Impressum
+      },
+  
     ]
+  },
+  {
+    path: '/solution/:url',
+    component: Solution
   },
   {
     path: '/about',

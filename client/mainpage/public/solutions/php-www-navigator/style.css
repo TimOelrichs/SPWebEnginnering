@@ -4,22 +4,22 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#edit {
-  height: 50px;
-  width: 50px;
-  position: absolute;
-  bottom: 50px;
-  right: 20px;
-  border-radius: 50%;
-  background-color: brown;
-  text-align: center;
-  align-content: center;
+a {
+  display: block;
+  padding: 5px 30px 0px;
+  text-decoration: none;
+}
+a:hover {
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  background-color: white;
 }
 
 #mainnav {
   display: flex;
   list-style: none;
-  justify-content: space-between;
+  justify-content: flex-start;
   min-width: 200px;
 }
 
@@ -68,4 +68,28 @@ footer {
   background-color: #333;
   color: white;
   padding: 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.btn {
+  margin: 5px 5px 0px;
+  height: 20px;
+  display: block;
+  padding: 5px 20px;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  align-self: baseline;
+  background-color: white;
+  border: none;
+  border-radius: 2px;
+}
+
+.edit {
+  background-color: blueviolet;
 }

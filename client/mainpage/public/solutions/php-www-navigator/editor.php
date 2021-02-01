@@ -41,8 +41,9 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     }
 
     label {
+        display: inline-block;
         padding: 5px;
-        width: 300px;
+        width: 150px;
     }
 
     header {
@@ -61,7 +62,7 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     <h1>Content Editor</h1>
 </header>
 <div id="form">
-    <legend>Select content area and add a new text:</legend>
+    <legend>Kategorie auswählen oder hinzufügen:</legend>
     <div>
         <select name="top_header">
         </select>
@@ -88,7 +89,7 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
 </div>
 
 <?PHP
-$file = '../data/data.json';
+$file = './data/data.json';
 $contents = file_get_contents($file);
 $json = json_decode($contents, true);
 ?>

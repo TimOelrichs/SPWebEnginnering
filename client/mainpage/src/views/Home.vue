@@ -1,16 +1,19 @@
 <template>
   <div class="home">
-    <tool-bar>
+    <tool-bar id="toolbar">
       Semesterprojekt
       <ul slot="right">
          <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/portfolio">Portofolio</router-link></li>
       </ul>
     </tool-bar>
-    <transition name="slide">
+    <transition name="fade">
     <router-view></router-view>
     </transition>
-    <footer>Tim Oelrichs</footer>
+    <footer id="footer"><ul slot="right">
+      <p>© Tim Oelrichs, 2021</p>
+         <li><router-link to="/impressum">Impressum</router-link></li>
+      </ul></footer>
   </div>
 </template>
 
@@ -29,15 +32,18 @@ export default {
 <style scoped>
 
 .home{
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  
 }
 
-router-view{
-  height: 80vh;
+#toolbar{
+    position: sticky;
+    top: 0;
 }
 
-footer{
+
+#footer{
+  position: sticky;
+  bottom: 0;
   background-color: grey;
 }
 </style>

@@ -6,10 +6,11 @@
         <li><router-link to="/portfolio">Portofolio</router-link></li>
       </ul>
     </tool-bar>
-    
+    <component></component>
 </template>
 
 <script>
+import ToolBar from "../components/ToolBar.vue"
 export default {
 
 }

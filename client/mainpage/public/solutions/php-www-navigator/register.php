@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="de">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrierung</title>
-</head>
-
 <?PHP
 session_start();
 
@@ -15,7 +6,7 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['passw
     $passwd = $_POST['password'];
     $repeated_passwd = $_POST['passwordRepeat'];
 
-    $file = '../data/raw_passwd.csv';
+    $file = './data/users.csv';
     include "./helpers/users.php";
     echo "<script> var errors = {};</script>";
     if (!userExists($_POST)) {
@@ -38,6 +29,15 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['passw
     echo "<script> if(errors){showErrors()}'</script>";
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrierung</title>
+</head>
 
 <body>
     <form method="post">

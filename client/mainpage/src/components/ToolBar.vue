@@ -28,6 +28,7 @@ export default {
       padding: 0px;
 }
  .toolbar{
+       background-color: white;
        display: flex;
        flex-direction: row;
        justify-content: space-between;
