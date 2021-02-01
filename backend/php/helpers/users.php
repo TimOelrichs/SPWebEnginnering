@@ -15,6 +15,8 @@ function userExists($data)
     return false;
 }
 
+
+
 function login($data)
 {
     $file = '../data/raw_passwd.csv';
