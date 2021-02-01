@@ -87,6 +87,8 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     <textarea name="references"></textarea>
     <input type="submit" value="Submit" id="submit"><i class="material-icons">publish</i></input>
 </div>
+<div id="preview">
+</div>
 
 <?PHP
 $file = './data/data.json';
@@ -134,6 +136,26 @@ $json = json_decode($contents, true);
     };
 
 
+    function preview() {
+        console.log("preview")
+        fetch(new Request("./navigator.php"), {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-store',
+            body: json
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(async res => {
+            let html = await res.text();
+            console.log(html)
+            document.documentElement.innerHTML = html;
+            history.pushState({
+                url: "/navigator.php"
+            }, "Preview", "navigator.php");
+        });
+    }
 
     function updateSubheaders(header) {
         let category = header || top_header.value;

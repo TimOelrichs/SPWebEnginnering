@@ -4,7 +4,25 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     header("Location: login.php");
     exit;
 }
+
+function isPreviewMode()
+{
+    return $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION["login"]) && $_SESSION["login"] == 1;
+}
+
+function getData()
+{
+    if (isPreviewMode()) {
+        return file_get_contents('php://input');
+    }
+    $file = "./data/data.json";
+    $contents = file_get_contents($file);
+    $json = json_decode($contents, true);
+    return json_encode($json);
+}
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="de">
@@ -22,7 +40,13 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
         <header>
             <div class="flex">
                 <h1>PHP WWW-Navigator</h1>
-                <p>Hallo, <?php echo ucwords($_SESSION['user']) ?>!</p>
+                <p><?php
+                    if (isPreviewMode()) {
+                        echo "Preview Mode";
+                    } else {
+                        echo "Hallo," . ucwords($_SESSION['user']) . "!";
+                    }
+                    ?></p>
                 <div class="flex">
                     <a class="btn edit" href="editor.php"><i class="material-icons">edit</i></a>
                     <a class="btn" href="logout.php">Log Out</a>
@@ -55,13 +79,11 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     </div>
     <script>
         async function getData() {
-            let json = <?PHP
-                        $file = "./data/data.json";
-                        $contents = file_get_contents($file);
-                        $json = json_decode($contents, true);
-                        echo json_encode($json)
+            let json = <?PHP echo getData()
+
                         ?>;
             //let data = await fetch("./content.php")
+            console.log(json);
             return json;
         }
 
