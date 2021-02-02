@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <div id="site">
+        <header></header>
+        <nav></nav>
+        <main></main>
+        <aside></aside>
+    </div>
+    <style>
+        #site {
+            overflow: hidden;
+  display: grid;
+  grid-template-rows: 10vh 10vh 150vh 10vh;
+  grid-template-columns: 1fr;
+}
+
+div * {
+  min-height: 10vh;
+}
+
+header {
+  background-color: red;
+}
+nav {
+  background-color: greenyellow;
+}
+main {
+  background-color: blue;
+}
+aside {
+  background-color: rgb(234, 62, 254);
+}
+
+@media screen and (min-width: 360px) {
+  #site {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto 4fr 1fr;
+    grid-template-areas:
+      'header header'
+      'sidenav main'
+      'aside aside';
+  }
+
+  header {
+    grid-area: header;
+  }
+  nav {
+    grid-area: sidenav;
+  }
+  main {
+    grid-area: main;
+    height: 60vh;
+  }
+  aside {
+    grid-area: aside;
+  }
+}
+
+@media screen and (min-width: 765px) {
+  #site {
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 3fr auto;
+    grid-template-areas:
+      'header header header'
+      'sidenav main aside';
+  }
+  main {
+    height: 70vh;
+  }
+}
+
+    </style>
+</body>
+</html>

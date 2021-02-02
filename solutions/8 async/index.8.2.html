@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="container"></div>
+    
+<script>
+
+let div = document.getElementById('container')
+
+async function getAndConcatText(){
+    let [a, b] = await Promise.all([
+        (async () => await fetch("./A.txt").then(x => x.text()))(),
+        (async () => await fetch("./B.txt").then(x => x.text()))()
+    ])
+
+    a = a.split('\n'); 
+    b = b.split('\n');
+    a =  a.length >= b.length ? a.map((e, i) => e + (b[i] || "")) : b.map((e, i) => (a[i] || "") + e)
+    a = a.join("<br>")
+    div.innerHTML = a;
+}
+
+getAndConcatText()
+
+</script>
+</body>
+</html>

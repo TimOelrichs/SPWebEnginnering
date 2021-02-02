@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EiWE2020 A 2.3</title>
+</head>
+<body>
+    <h1>Survey From</h1>
+    <form action="">
+        <p>Let us know how we can improve freeCodeCamp</p>
+            <label for="name">* Name</label>
+            <input type="text" name="name" value="Enter your name"><br>
+    
+        <label for="name">* Email</label>
+        <input type="email" name="email" value="Enter your email"><br>
+        <label for="age">* Age</label>
+        <input type="number" name="age" value="Age"><br>
+        <label for="role">Which option best describes your current role?</label>
+        <select name="role">
+            <option value="student">Student</option>
+        </select>
+        <div class="row">
+        <p class="label">* How likels is that you woeld recomend freeCodeCamp to a friend?</p>
+          <div class="rgroup">
+            
+            <input type="radio" name="recommend" value="defintely" id="def">
+            <label for="def">Definitely</label><br>
+            
+            <input type="radio" id="maybe" name="recommend" value="maybe">
+            <label for="maybe">Maybe</label><br>
+             
+            <input type="radio" id="ns" name="recommend" value="notsure">
+            <label for="ns">Not sure</label><br>
+         </div>
+        </div>
+         <label for="role">What do you like most in FCC:</label>
+        <select name="option" value="Select an option">
+            <option value="student">Student</option>
+        </select>
+        </div>
+
+        <div class="row">
+        <p class="label">* How likels is that you woeld recomend freeCodeCamp to a friend?</p>
+        <div class="cgroup">
+          <input type="checkbox" name="future" value="defintely" id="ffp">
+          <label for="ffp">Frond-end-Projects</label> <br>
+          <input type="checkbox" id="bep" name="future" value="maybe">
+          <label for="bep">Back-end-Projects</label><br>
+          <input type="checkbox" id="dv" name="future" value="notsure">
+          <label for="dv">Data Visualization</label> <br>
+       </div>
+       </div>
+    </form>
+
+<style>
+    body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: o;
+  background-color: #b2d6d1;
+  text-align: center;
+}
+
+* {
+  margin-bottom: 20px;
+}
+
+form {
+  background-color: white;
+  text-align: center;
+  justify-content: center;
+  padding: 2px;
+  margin: 5px;
+}
+
+label {
+  display: inline-block;
+  text-align: right;
+  margin: 0px;
+  margin-right: 10px;
+}
+
+.label {
+  float: left;
+  width: 330px;
+  height: 100px;
+}
+
+input,
+select {
+  padding: 2px;
+  border: 1px solid lightgrey;
+  border-radius: 5%;
+  width: 20vw;
+  height: 20px;
+}
+
+select {
+  height: 30px;
+}
+
+input [type='radio'],
+input [type='checkbox'] {
+  height: 10px;
+  width: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+</style>
+
+</body>
+</html>

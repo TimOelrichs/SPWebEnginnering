@@ -10,9 +10,9 @@
                   </h2>
             </div>
       </div>
-      <div>
+      <nav id="right">
           <slot name="right"></slot>
-      </div>
+      </nav>
 </div>
 </template>
 
@@ -27,7 +27,12 @@ export default {
       margin: 0px;
       padding: 0px;
 }
+
+      h1, h2{
+  color:#64ffda
+}
  .toolbar{
+       width: 100vw;
        background-color: white;
        display: flex;
        flex-direction: row;
@@ -49,5 +54,16 @@ export default {
        height: 30px;
        padding: 5px;
        
+ }
+
+ #right{
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+       width: 300px;
+ }
+
+ #right ul{
+       list-style-type: none;
  }
 </style>
