@@ -7,6 +7,8 @@
           <p>Vorlesungseinheit: {{solution.unit}}</p>
       </div>
       <button @click="goTo(solution.routerlink)">Zur Lösung</button>
+      <a href="github"><i class="fab fa-github"></i></a>
+      <a :href="'solution/' + solution.routerlink">View</a>
       <router-link v-bind:to="'solution/' + solution.routerlink">Lösung anzeigen</router-link>
   </div>
   
