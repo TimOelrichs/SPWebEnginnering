@@ -1,0 +1,160 @@
+[
+  {
+    "id": "1.4",
+    "titel": "1.4. HTML-Wireframe",
+    "subtitel": "WWW-Navigator",
+    "vorlesungs": "1. Einführung",
+    "beschreibung": "Aufgabe: Ein vogegebenes Wireframe mit HTML nachbilden",
+    "tags": ["HTML"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "2.2.1",
+    "titel": "2.2.1. CSS Positionierung",
+    "subtitel": "Sticky Header",
+    "vorlesungs": "2. CSS 1.Teil",
+    "beschreibung": "Aufgabe: Dynamischen Verhalten einer Seite im Video mit HTML und CSS exakt nachbilden.",
+    "tags": ["HTML", "CSS"]
+  },
+  {
+    "id": "2.2.2.",
+    "titel": "CSS Positionierung",
+    "subtitel": "Hide and Show mit Checkbox ohne JS",
+    "vorlesungs": "2. CSS 1.Teil",
+    "beschreibung": "Aufgabe: Dynamischen Verhalten einer Seite im Video mit HTML und CSS exakt nachbilden.",
+    "tags": ["HTML", "CSS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "2.3.",
+    "titel": "Wireframe mit HTML and CSS",
+    "subtitel": "Survey Form",
+    "vorlesungs": "2. CSS 1.Teil",
+    "beschreibung": "Aufgabe: Gegebenes Wireframe nachbilden.",
+    "tags": ["HTML", "CSS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "3.1.",
+    "titel": "Responsiv mit Flexbox Desktop-First",
+    "subtitel": "Flexbox Desktop-First",
+    "vorlesungs": "3. CSS 2.Teil",
+    "beschreibung": "Aufgabe: Mit HTML und CSS Flexbox ein responsive Webdesign nach der Desktop-First-Strategie nachbilden.",
+    "tags": ["HTML", "CSS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "3.2",
+    "titel": "Responsiv mit Grid Mobile-First",
+    "subtitel": "Grid Mobile-First",
+    "vorlesungs": "3. CSS 2.Teil",
+    "beschreibung": "Aufgabe: Mit HTML und CSS Flexbox ein responsive Webdesign nach der Mobil-First-Strategie nachbilden.",
+    "tags": ["HTML", "CSS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "3.3.",
+    "titel": "Responsiv mit Grid",
+    "subtitel": "Grid",
+    "vorlesungs": "3. CSS 2.Teil",
+    "beschreibung": "Aufgabe: Landingpage mit Grid nachbilden.",
+    "tags": ["HTML", "CSS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "4.3.",
+    "titel": "Fibonacci",
+    "subtitel": "Fibonaccci Funktion",
+    "vorlesungs": "3. CSS 2.Teil",
+    "beschreibung": "Aufgabe: Schreiben Sie eine Fibonacci-Funktion und geben Sie die ersten 2000 Zahlen aus.",
+    "tags": ["HTML", "CSS", "JS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "4.4.",
+    "titel": "Topsort (als WebApp)",
+    "subtitel": "Fibonaccci Funktion",
+    "vorlesungs": "3. CSS 2.Teil",
+    "beschreibung": "Aufgabe: Schreiben Sie in JavaScript eine Funktion topsort(), die eine topologische Sortierung berechnet.",
+    "tags": ["HTML", "CSS", "JS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "4.4.",
+    "titel": "Topsort",
+    "subtitel": "Fibonaccci Funktion",
+    "vorlesungs": "4. JavaScript",
+    "beschreibung": "Aufgabe: Schreiben Sie in JavaScript eine Funktion topsort(), die eine topologische Sortierung berechnet.",
+    "tags": ["HTML", "CSS", "JS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "6.2.",
+    "titel": "Textanalyse mit filter-map-reduce",
+    "subtitel": "Funktionale Programmierung",
+    "vorlesungs": "6. Functional",
+    "beschreibung": "Aufgabe: Schreiben Sie in JavaScript eine Textanalyse. Ermitteln Sie die häufigsten Begriffe im Text Plagiatsresolution. Filtern Sie dabei alle Stoppworte und HTML-Tags. Reduzieren Sie das Ergebnis auf die 3 häufigsten Begriffe.",
+    "tags": ["HTML", "CSS", "JS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "7.1.",
+    "titel": "Performanzmessungen von DOM-Operationen ",
+    "subtitel": "",
+    "vorlesungs": "7. DOM",
+    "beschreibung": "Aufgabe: Implementieren Sie Performanzmessungen zum Vergleich von innerHTML, innerText, textContent und outerHTML selbstständig in JavaScript durch Nutzung der DOM API. Geben Sie die Messergebnisse als Tabelle aus.",
+    "tags": ["HTML", "CSS", "JS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "8.1.",
+    "titel": "Promises",
+    "subtitel": "",
+    "vorlesungs": "8. async",
+    "beschreibung": "Aufgabe: Laden Sie mit der fetch-API parallel zwei Text-Dateien. Geben Sie auf einer Webseite den Inhalt beider Dateien zeilenweise aus, wobei der Anfang der Zeile aus A.txt und das Ende aus B.txt stammen soll.",
+    "tags": ["HTML", "CSS", "JS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "8.2.",
+    "titel": "async / await",
+    "subtitel": "",
+    "vorlesungs": "8. async",
+    "beschreibung": "Aufgabe: Aufgabe 8.1 mit async / await",
+    "tags": ["HTML", "CSS", "JS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "8.3.",
+    "titel": "WWW-Navigator",
+    "subtitel": "",
+    "vorlesungs": "8. async",
+    "beschreibung": "Aufgabe: Schreiben Sie einen Navigator für die Fachbegriffe des WWW zu den Oberthemen HTML, CSS und JavaScript. Im Hauptmenü sollen diese 3 Oberthemen zur Auswahl stehen. Im Untermenü soll eine zugehörige Liste von Fachbegriffen zum jeweiligen ausgewählten Oberthema stehen. ",
+    "tags": ["HTML", "CSS", "JS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  },
+  {
+    "id": "9.1.",
+    "titel": "Komponente in Vue.js",
+    "subtitel": "",
+    "vorlesungs": "8. async",
+    "beschreibung": "Aufgabe: Schreiben Sie einen Navigator für die Fachbegriffe des WWW zu den Oberthemen HTML, CSS und JavaScript. Im Hauptmenü sollen diese 3 Oberthemen zur Auswahl stehen. Im Untermenü soll eine zugehörige Liste von Fachbegriffen zum jeweiligen ausgewählten Oberthema stehen. ",
+    "tags": ["HTML", "CSS", "JS"],
+    "link": "php-www-navigator",
+    "githublink": "link"
+  }
+]

@@ -1,22 +1,19 @@
 <template>
-<main>
     <div id="container">
         <div id="title">
             <div class="headings">
-                <span id="iam">Ich bin</span>
+                <span id="iam">Ich bin</span><br>
                 <span id="name">Tim Oelrichs</span>
             </div> 
         </div>
-        <div id="text" class="headings">
+        <div id="text">
             <p>Diese wurde Seite als Semesterprojekt an der Hochschule Bonn-Rhein-Sieg für die Lehreinheit <span class="green">Einführung in Web Engineering</span>  erstellt. </p>
             <p>Die Webseite dient als Navigator durch die von mir erstellten Lösungen zu den Übungsaufgaben.</p>
         </div>
-    <div class="btn"><router-link to="/portfolio">Lösungen</router-link></div>
+        <div>
+    <router-link class="btn" to="/portfolio">Lösungen</router-link>
     </div>
-    
-</main>
-
-  
+</div> 
 </template>
 
 <script>
@@ -26,25 +23,14 @@ export default {
 </script>
 
 <style>
-main{
-    width: 100vw;
-    height: calc(100vh - 124px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-}
 
 .headings{
     text-align: left;
 }
 
 #container{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
+width: 50%;
+min-width: 300px;
 }
 
 span{
@@ -54,15 +40,46 @@ span{
 
 #iam{
     font-size: 2rem;
+    color: #a8b2d1;
 }
 
 #name{
-    font-size: 5rem;
+    font-size: 4rem;
     color: #ccd6f6;
 }
 
 #text{
-    width: 50vw;
+    width: 100%;
+    text-align: left;
     min-width: 300px;
+    margin: 40px 0px;
 }
+.green{
+    color:#64ffda; 
+}
+
+a{
+  text-decoration: none;
+}
+a:hover{
+  color: #64ffda;
+}
+
+.btn{
+  display: block;
+  border-radius: 2px;
+  border: 1px solid #64ffda;
+  color: #64ffda;
+  padding: 5px 30px;
+}
+
+.btn:hover{
+  display: block;
+  border-radius: 2px;
+  border: 1px solid #64ffda;
+  background-color: #64ffda;
+  color: #020c1b;
+  padding: 5px 30px;
+}
+
 </style>

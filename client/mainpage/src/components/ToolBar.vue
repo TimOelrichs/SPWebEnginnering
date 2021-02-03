@@ -10,8 +10,10 @@
                   </h2>
             </div>
       </div>
-      <nav id="right">
+      <nav>
+      <ul id="right">
           <slot name="right"></slot>
+      </ul>
       </nav>
 </div>
 </template>
@@ -32,14 +34,16 @@ export default {
   color:#64ffda
 }
  .toolbar{
-       width: 100vw;
+       width: 100%;
        background-color: white;
        display: flex;
        flex-direction: row;
        justify-content: space-between;
+       align-items: center;
        height: 30px;
-      padding: 15px 5px 5px 0px;
-      width: 100vw;
+       z-index: 100;
+      padding: 15px 0px 5px 0px;
+      width: 100%;
       box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); /* TODO QUELLE*/
  }
 
@@ -56,14 +60,21 @@ export default {
        
  }
 
- #right{
+ #right ul{
        display: flex;
-       flex-direction: row;
-       justify-content: space-between;
+       justify-content: center;
+       align-content: flex-start;
+       padding-right: 10px;
        width: 300px;
+      list-style-type: none;
  }
 
- #right ul{
-       list-style-type: none;
+ #right ul li{
+       padding-right: 10px;
  }
+
+ #right ul li a:hover{ 
+      color: #64ffda;
+ }
+ 
 </style>

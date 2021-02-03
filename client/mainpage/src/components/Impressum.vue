@@ -109,4 +109,22 @@ li{
     text-align: left;
     padding: 5px;
 }
+.green{
+    color:#64ffda; 
+}
+
+a{
+  text-decoration: none;
+}
+a:hover{
+  color: #64ffda;
+}
+
+.btn{
+  display: block;
+  border-radius: 2px;
+  border: 1px solid #64ffda;
+  color: #64ffda;
+  padding: 5px 30px;
+}
 </style>
