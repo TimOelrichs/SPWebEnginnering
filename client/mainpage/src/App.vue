@@ -80,8 +80,9 @@ a{
 
 #main{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-content: flex-start;
   height: auto;
   min-height: calc(100vh - 50px);
   width: 100%;

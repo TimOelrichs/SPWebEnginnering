@@ -29,8 +29,9 @@ export default {
 }
 
 #container{
-width: 50%;
-min-width: 300px;
+    margin-top: 70px;
+    width: 50%;
+    min-width: 300px;
 }
 
 span{

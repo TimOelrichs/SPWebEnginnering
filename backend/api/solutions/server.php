@@ -1,9 +1,9 @@
 <?PHP
 include("./response.php");
-include("../cors.php");
+include("../../cors.php");
 define("LOG_DIR", "../logs/");
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') { // HTTP POST request …
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $file = "./data/data.json";

@@ -1,0 +1,186 @@
+[
+  {
+    "id": "1.4",
+    "titel": "HTML-Wireframe",
+    "subtitel": "WWW-Navigator",
+    "vorlesung": "1. Einführung",
+    "beschreibung": "Ein vogegebenes Wireframe mit HTML nachbilden",
+    "tags": ["HTML"]
+  },
+  {
+    "id": "2.2.1",
+    "titel": "CSS Positionierung",
+    "subtitel": "Sticky Header",
+    "vorlesung": "2. CSS 1.Teil",
+    "beschreibung": "Dynamischen Verhalten einer Seite im Video mit HTML und CSS exakt nachbilden.",
+    "tags": ["HTML", "CSS"]
+  },
+  {
+    "id": "2.2.2",
+    "titel": "CSS Positionierung",
+    "subtitel": "Hide and Show mit Checkbox ohne JS",
+    "vorlesung": "2. CSS 1.Teil",
+    "beschreibung": "Dynamischen Verhalten einer Seite im Video mit HTML und CSS exakt nachbilden.",
+    "tags": ["HTML", "CSS"]
+  },
+  {
+    "id": "2.3",
+    "titel": "Wireframe mit HTML and CSS",
+    "subtitel": "Survey Form",
+    "vorlesung": "2. CSS 1.Teil",
+    "beschreibung": "Gegebenes Wireframe nachbilden.",
+    "tags": ["HTML", "CSS"]
+  },
+  {
+    "id": "3.1",
+    "titel": "Responsiv mit Flexbox Desktop-First",
+    "subtitel": "Flexbox Desktop-First",
+    "vorlesung": "3. CSS 2.Teil",
+    "beschreibung": "Mit HTML und CSS Flexbox ein responsive Webdesign nach der Desktop-First-Strategie nachbilden.",
+    "tags": ["HTML", "CSS"]
+  },
+  {
+    "id": "3.2",
+    "titel": "Responsiv mit Grid Mobile-First",
+    "subtitel": "Grid Mobile-First",
+    "vorlesung": "3. CSS 2.Teil",
+    "beschreibung": "Mit HTML und CSS Flexbox ein responsive Webdesign nach der Mobil-First-Strategie nachbilden.",
+    "tags": ["HTML", "CSS"]
+  },
+  {
+    "id": "3.3",
+    "titel": "Responsiv mit Grid",
+    "subtitel": "Grid",
+    "vorlesung": "3. CSS 2.Teil",
+    "beschreibung": "Landingpage mit Grid nachbilden.",
+    "tags": ["HTML", "CSS"]
+  },
+  {
+    "id": "4.3",
+    "titel": "Fibonacci",
+    "subtitel": "Fibonaccci Funktion",
+    "vorlesung": "3. CSS 2.Teil",
+    "beschreibung": "Schreiben Sie eine Fibonacci-Funktion und geben Sie die ersten 2000 Zahlen aus.",
+    "tags": ["HTML", "CSS", "JS"]
+  },
+  {
+    "id": "4.4",
+    "titel": "Topsort (als WebApp)",
+    "subtitel": "Fibonaccci Funktion",
+    "vorlesung": "3. CSS 2.Teil",
+    "beschreibung": "Schreiben Sie in JavaScript eine Funktion topsort(), die eine topologische Sortierung berechnet.",
+    "tags": ["HTML", "CSS", "JS"]
+  },
+  {
+    "id": "4.4",
+    "titel": "Topsort",
+    "subtitel": "Fibonaccci Funktion",
+    "vorlesung": "4. JavaScript",
+    "beschreibung": "Schreiben Sie in JavaScript eine Funktion topsort(), die eine topologische Sortierung berechnet.",
+    "tags": ["HTML", "CSS", "JS"]
+  },
+  {
+    "id": "6.2",
+    "titel": "Textanalyse mit filter-map-reduce",
+    "subtitel": "Funktionale Programmierung",
+    "vorlesung": "6. Functional",
+    "beschreibung": "Schreiben Sie in JavaScript eine Textanalyse. Ermitteln Sie die häufigsten Begriffe im Text Plagiatsresolution. Filtern Sie dabei alle Stoppworte und HTML-Tags. Reduzieren Sie das Ergebnis auf die 3 häufigsten Begriffe.",
+    "tags": ["HTML", "CSS", "JS"]
+  },
+  {
+    "id": "7.1",
+    "titel": "Performanzmessungen von DOM-Operationen ",
+    "subtitel": "",
+    "vorlesung": "7. DOM",
+    "beschreibung": "Implementieren Sie Performanzmessungen zum Vergleich von innerHTML, innerText, textContent und outerHTML selbstständig in JavaScript durch Nutzung der DOM API. Geben Sie die Messergebnisse als Tabelle aus.",
+    "tags": ["HTML", "CSS", "JS"]
+  },
+  {
+    "id": "7.2",
+    "titel": "Rednerliste mit Zeitmessung",
+    "subtitel": "",
+    "vorlesung": "7. DOM",
+    "beschreibung": "Implementieren Sie die interaktive Anwendung Rednerliste mit Zeitmessung selbstständig in JavaScript durch Nutzung der DOM API und der Timer-Funktionen. Neue Redner sollen auf Knopfdruck hinzugefügt werden können. Deren Uhr wird dann sofort automatisch gestartet und alle anderen Uhren angehalten. Bei jedem Redner soll die individuelle, gemessene Redezeit sekundengenau angezeigt werden. Für jeden Redner soll es einen eigenen Start-/Stopp-Button geben. Es soll immer nur eine Uhr laufen. Angezeigt werden sollen die bisherigen Summenzeiten aller Redebeiträge der betreffenden Person. Suchen Sie eine möglichst kurze und elegante Lösung. Achten Sie gleichzeitig auf gute Usability: z.B. wenn die Eingabe mit einem Return beendet wird, soll der Button-Click nicht mehr erforderlich sein, usw.",
+    "tags": ["HTML", "CSS", "JS"]
+  },
+  {
+    "id": "8.1",
+    "titel": "Promises",
+    "subtitel": "",
+    "vorlesung": "8. async",
+    "beschreibung": "Laden Sie mit der fetch-API parallel zwei Text-Dateien. Geben Sie auf einer Webseite den Inhalt beider Dateien zeilenweise aus, wobei der Anfang der Zeile aus A.txt und das Ende aus B.txt stammen soll.",
+    "tags": ["HTML", "CSS", "JS"]
+  },
+  {
+    "id": "8.2",
+    "titel": "async / await",
+    "subtitel": "",
+    "vorlesung": "8. async",
+    "beschreibung": "Aufgabe 8.1 mit async / await",
+    "tags": ["HTML", "CSS", "JS"]
+  },
+  {
+    "id": "8.3",
+    "titel": "WWW-Navigator",
+    "subtitel": "",
+    "vorlesung": "8. async",
+    "beschreibung": "Schreiben Sie einen Navigator für die Fachbegriffe des WWW zu den Oberthemen HTML, CSS und JavaScript. Im Hauptmenü sollen diese 3 Oberthemen zur Auswahl stehen. Im Untermenü soll eine zugehörige Liste von Fachbegriffen zum jeweiligen ausgewählten Oberthema stehen. ",
+    "tags": ["HTML", "CSS", "JS"]
+  },
+  {
+    "id": "9.1",
+    "titel": "Komponente in Vue.js",
+    "subtitel": "",
+    "vorlesung": "9. Vue",
+    "beschreibung": "Schreiben Sie eine Vue.js Single File Component mit einem Text-Eingabefeld und 3 Ausgabefeldern, in denen man während des Tippens sehen kann, (a) wie viele Buchstaben (b) wie viele Leerzeichen und (c) wie viele Worte man in das Text-Eingabefeld bereits eingegeben hat.\nBetten Sie Ihre Komponente in eine Webseite zweimal ein und testen Sie, ob beide Komponenten unabhängig voneinander sind.",
+    "tags": ["HTML", "CSS", "JS", "Vue.js"]
+  },
+  {
+    "id": "9.2",
+    "titel": "Menü-Komponente in Vue.js",
+    "subtitel": "",
+    "vorlesung": "9. Vue",
+    "beschreibung": "Schreiben Sie eine möglichst flexible Vue.js Single File Component für Menüs und wenden Sie diese in derselben Webseite zweimal an, einmal horizontal, das andere Mal vertikal.",
+    "tags": ["HTML", "CSS", "JS", "Vue.js"]
+  },
+  {
+    "id": "9.3",
+    "titel": "Vue.js WWW-Navigator",
+    "subtitel": "",
+    "vorlesung": "9. Vue",
+    "beschreibung": "Schreiben Sie Ihren WWW-Navigator als SPA in Vue.js.",
+    "tags": ["HTML", "CSS", "JS", "Vue.js"]
+  },
+  {
+    "id": "10.1",
+    "titel": "Registrierung mit PHP",
+    "subtitel": "",
+    "vorlesung": "10. PHP",
+    "beschreibung": "Erstellen Sie mit PHP 5 auf www2.inf.h-brs.de ein Registrierungsformular. Speichern Sie die eingegebenen Daten persistent in einer Datei auf www2.inf.h-brs.de. Schreiben Sie Ihre PHP-Scripte so, dass es zu keinen Nebenläufigkeitsartefakten (z.B. Lost Update) kommen kann, egal wie viele Nutzer sich gleichzeitig registrieren.",
+    "tags": ["HTML", "CSS", "JS", "PHP"]
+  },
+  {
+    "id": "10.2",
+    "titel": "Login mit PHP",
+    "subtitel": "",
+    "vorlesung": "10. PHP",
+    "beschreibung": "Schreiben Sie eine sichere PHP-Lösung für Login, das die persistierten Registrierungsdaten aus der letzten Aufgabe nutzt.",
+    "tags": ["HTML", "CSS", "JS", "PHP"]
+  },
+  {
+    "id": "10.3",
+    "titel": "Login mit PHP",
+    "subtitel": "",
+    "vorlesung": "10. PHP",
+    "beschreibung": "Schreiben Sie eine sichere PHP-Lösung für Login, das die persistierten Registrierungsdaten aus der letzten Aufgabe nutzt.",
+    "tags": ["HTML", "CSS", "JS", "PHP"]
+  },
+  {
+    "id": "z.1",
+    "titel": "Flexbox Playground",
+    "subtitel": "",
+    "vorlesung": "freiwillige Zusatz",
+    "beschreibung": "Nachbildung eines FlexBoy Playgrounds",
+    "tags": ["HTML", "CSS", "JS"]
+  }
+]

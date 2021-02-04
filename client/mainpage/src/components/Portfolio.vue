@@ -1,7 +1,7 @@
 <template>
 
   <div id="solutions">
-    <div class="filter">
+    <div class="filter" id="filter">
       <input type="text" v-model="searchText" placeholder="Filter nach Titel oder Nr.">
     </div>
     <div id="cards">
@@ -21,7 +21,8 @@ components: {
   data: function () {
     return {
       solutions: [],
-      searchText: ""
+      searchText: "",
+      tags: [],
     }
   },
   created: async function () {
@@ -31,17 +32,27 @@ method: 'GET',
 mode: 'cors',
 cache: 'no-store'
 });
-    console.log(data);
-    data = await data.json();
-    console.log(data);
-    this.solutions = data;
-},
+    this.solutions = await data.json();
+    this.tags = this.getTags();
+    //this.tags.forEach( t => tagsFilter[t] = true); 
 
+},methods:{
+  getTags: function () {
+    /*
+    let set = new Set([]);
+    this.solutions.forEach(s => {
+     set = new Set([...set, ...s.tags])
+    });
+    return Array.from(set);
+    */
+  }
+ 
+},
 computed:{
   filteredSolutions : function (){
-    console.log(this.searchText)
     return this.solutions.filter( s => s.titel.includes(this.searchText) || s.id.startsWith(this.searchText));
-  }
+  },
+
 },
 }
 
@@ -52,20 +63,44 @@ computed:{
 <style>
 #solutions{
   margin: 0px;
+  margin-top: 25px;
   display: flex;
   justify-content: center;
   align-content: flex-start;
   width: 80%;
   height: auto;
   padding: 20px; 
-  
-  
+   
+}
+
+.filter{
+  position: fixed;
+  top: 60px;
+  widows: 100%;
+  background-color:#020c1b;
+  z-index: 100;
+}
+
+input{
+  color: #64ffda;
+  border: solid 1px white;
+  background-color: #020c1b;
+}
+
+input[type=text]{
+  height: 30px;
+  border-radius: 2px;
+  padding: 2px 15px;
+}
+input[type=text]:focus{
+  border: solid 1px white
 }
 
 #cards{
   display: flex;
   flex-wrap: wrap;
   width: 90%;
+  height: auto;
 }
 .green{
     color:#64ffda; 
@@ -91,7 +126,7 @@ a:hover{
   border-radius: 2px;
   border: 1px solid #64ffda;
   background-color: #64ffda;
-  color: #64ffda;
+  color: #020c1b;
   padding: 5px 30px;
 }
 </style>
