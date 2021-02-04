@@ -1,7 +1,11 @@
 <template>
+
   <div id="solutions">
+    <div class="filter">
+      <input type="text" v-model="searchText" placeholder="Filter nach Titel oder Nr.">
+    </div>
     <div id="cards">
-    <Card v-for="solution in solutions" :key="solution.index" :solution="solution">
+    <Card v-for="solution in filteredSolutions" :key="solution.index" :solution="solution">
       </Card>
       </div>
   </div>
@@ -16,7 +20,8 @@ components: {
   },
   data: function () {
     return {
-      solutions: []
+      solutions: [],
+      searchText: ""
     }
   },
   created: async function () {
@@ -30,7 +35,14 @@ cache: 'no-store'
     data = await data.json();
     console.log(data);
     this.solutions = data;
-    }
+},
+
+computed:{
+  filteredSolutions : function (){
+    console.log(this.searchText)
+    return this.solutions.filter( s => s.titel.includes(this.searchText) || s.id.startsWith(this.searchText));
+  }
+},
 }
 
 
@@ -42,6 +54,7 @@ cache: 'no-store'
   margin: 0px;
   display: flex;
   justify-content: center;
+  align-content: flex-start;
   width: 80%;
   height: auto;
   padding: 20px; 

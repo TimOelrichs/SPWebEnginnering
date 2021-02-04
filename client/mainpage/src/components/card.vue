@@ -1,16 +1,17 @@
 <template>
 
   <div class="card">
-      <h4><span class="green">{{solution.id}}</span> {{solution.titel}}</h4>
-      <h5>{{solution.subtitel}}</h5>
-      <h4>Vorlesung: {{solution.vorlesung}}</h4>
+      <h4>{{solution.vorlesung}}</h4>
+      <div class="cardcenter">
+      <h5><span class="green">{{solution.id}}</span> {{solution.titel}}</h5>
+      <!--<h5>{{solution.subtitel}}</h5>-->
       <div> 
           <p>{{solution.beschreibung}}</p>
       </div>
-      <div>
-         <div class="tag" v-for="tag in solution.tags" :key="tag">{{tag}}</div>
+      <div class="tags">
+         <h5 class="tag" v-for="tag in solution.tags" :key="tag">{{tag}}</h5>
       </div>
-  
+  </div>
       <div class="cardbottom">
         <a class="btn" :href="githubBase + solution.id">Github</a>
         <a class="btn" :href="solutionBase +  solution.id">View</a>
@@ -42,9 +43,9 @@ data: function (){
     text-align: left;
     background-color: #0a192f;
     border-radius: 5px;
-    height: 300px;
-    width: 25%;
-    min-width: 250px;
+    height: auto;
+    width: 100%;
+    min-width: 100px;
     padding: 10px;
     /*
     box-shadow: 0 1px 3px rgba(255,255,255,0.2), 0 1px 2px rgba(255,255,255,0.24);
@@ -52,7 +53,7 @@ data: function (){
     */margin: 1rem;
   }
   .card:hover{
-    top: -10px;
+    top: -3px;
     /*box-shadow: 0 14px 28px rgba(255,255,255,0.25), 0 10px 10px rgba(255,255,255,0.22);
     */
   }
@@ -61,12 +62,29 @@ data: function (){
     height: 100px;
     width: 50px;
   }
-
+.cardcenter{
+  border-top: 1px solid #233554;
+  border-bottom: 1px solid #233554;
+}
 .cardbottom{
   display: flex;  
   position: relative;
+  justify-content: flex-start;
+  align-content: space-around;
+  height: 15%;
+  width: 100%;
   bottom: 0px;
-  border-top: 1px solid #233554;
-  padding: 10px;
+  margin-top: 15px;
+
+}
+
+.tags{
+  display: flex;
+  justify-content: flex-start;
+  align-items: space-around;
+  width: 100%;
+}
+.tag{
+  color:  #64ffda;
 }
 </style>

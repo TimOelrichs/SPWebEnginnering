@@ -39,7 +39,7 @@ export default {
   text-align: center;
   color: #ccd6f6;
   margin: 0px;
-  width: 100vw;
+  width: 100;
   box-sizing: border-box;
 }
 

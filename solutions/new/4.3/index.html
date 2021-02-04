@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonnaci-Zahlen</title>
+</head>
+<body onload="fibonacci(2000);">
+    <table id="table" border="1">
+        <tr>
+        <th colspan="2">Fibbonaci-Zahlen</th>
+        </tr>
+        <tr>
+            <th>Nr.</td>
+            <th>Zahl</td>
+        </tr>
+    </table>
+ <script>
+    var counter = 1;
+    var first = true;
+    function fibonacci(to){
+        var a = 0, b = 1, tmp;
+        add2Table(a,b);
+        for (let i = 0; i<=to;i++){
+               tmp = a;
+               a = b;
+               b = tmp + b;
+               add2Table(b);
+               if(b>Number.MAX_VALUE){
+                   if(first){
+                    console.log(counter)
+                    console.log(b)
+                    first = false; 
+                   }
+                   
+               }
+        }
+    }
+
+    function add2Table(...args){
+        var t = document.getElementById("table");
+        args.forEach(arg => {
+        var tr = document.createElement("tr");
+        var nr = document.createElement("td");
+        nr.innerText = counter++;
+        var td = document.createElement("td");
+        td.innerText = arg;
+        tr.appendChild(nr);
+        tr.appendChild(td);
+        t.appendChild(tr)
+        })  
+    }
+
+
+ </script>    
+</body>
+</html>

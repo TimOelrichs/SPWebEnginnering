@@ -1,160 +1,170 @@
 [
   {
     "id": "1.4",
-    "titel": "1.4. HTML-Wireframe",
+    "titel": "HTML-Wireframe",
     "subtitel": "WWW-Navigator",
-    "vorlesungs": "1. Einführung",
+    "vorlesung": "1. Einführung",
     "beschreibung": "Aufgabe: Ein vogegebenes Wireframe mit HTML nachbilden",
-    "tags": ["HTML"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML"]
   },
   {
     "id": "2.2.1",
-    "titel": "2.2.1. CSS Positionierung",
+    "titel": "CSS Positionierung",
     "subtitel": "Sticky Header",
-    "vorlesungs": "2. CSS 1.Teil",
+    "vorlesung": "2. CSS 1.Teil",
     "beschreibung": "Aufgabe: Dynamischen Verhalten einer Seite im Video mit HTML und CSS exakt nachbilden.",
     "tags": ["HTML", "CSS"]
   },
   {
-    "id": "2.2.2.",
+    "id": "2.2.2",
     "titel": "CSS Positionierung",
     "subtitel": "Hide and Show mit Checkbox ohne JS",
-    "vorlesungs": "2. CSS 1.Teil",
+    "vorlesung": "2. CSS 1.Teil",
     "beschreibung": "Aufgabe: Dynamischen Verhalten einer Seite im Video mit HTML und CSS exakt nachbilden.",
-    "tags": ["HTML", "CSS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS"]
   },
   {
-    "id": "2.3.",
+    "id": "2.3",
     "titel": "Wireframe mit HTML and CSS",
     "subtitel": "Survey Form",
-    "vorlesungs": "2. CSS 1.Teil",
+    "vorlesung": "2. CSS 1.Teil",
     "beschreibung": "Aufgabe: Gegebenes Wireframe nachbilden.",
-    "tags": ["HTML", "CSS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS"]
   },
   {
-    "id": "3.1.",
+    "id": "3.1",
     "titel": "Responsiv mit Flexbox Desktop-First",
     "subtitel": "Flexbox Desktop-First",
-    "vorlesungs": "3. CSS 2.Teil",
+    "vorlesung": "3. CSS 2.Teil",
     "beschreibung": "Aufgabe: Mit HTML und CSS Flexbox ein responsive Webdesign nach der Desktop-First-Strategie nachbilden.",
-    "tags": ["HTML", "CSS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS"]
   },
   {
     "id": "3.2",
     "titel": "Responsiv mit Grid Mobile-First",
     "subtitel": "Grid Mobile-First",
-    "vorlesungs": "3. CSS 2.Teil",
+    "vorlesung": "3. CSS 2.Teil",
     "beschreibung": "Aufgabe: Mit HTML und CSS Flexbox ein responsive Webdesign nach der Mobil-First-Strategie nachbilden.",
-    "tags": ["HTML", "CSS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS"]
   },
   {
-    "id": "3.3.",
+    "id": "3.3",
     "titel": "Responsiv mit Grid",
     "subtitel": "Grid",
-    "vorlesungs": "3. CSS 2.Teil",
+    "vorlesung": "3. CSS 2.Teil",
     "beschreibung": "Aufgabe: Landingpage mit Grid nachbilden.",
-    "tags": ["HTML", "CSS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS"]
   },
   {
-    "id": "4.3.",
+    "id": "4.3",
     "titel": "Fibonacci",
     "subtitel": "Fibonaccci Funktion",
-    "vorlesungs": "3. CSS 2.Teil",
+    "vorlesung": "3. CSS 2.Teil",
     "beschreibung": "Aufgabe: Schreiben Sie eine Fibonacci-Funktion und geben Sie die ersten 2000 Zahlen aus.",
-    "tags": ["HTML", "CSS", "JS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS", "JS"]
   },
   {
-    "id": "4.4.",
+    "id": "4.4",
     "titel": "Topsort (als WebApp)",
     "subtitel": "Fibonaccci Funktion",
-    "vorlesungs": "3. CSS 2.Teil",
+    "vorlesung": "3. CSS 2.Teil",
     "beschreibung": "Aufgabe: Schreiben Sie in JavaScript eine Funktion topsort(), die eine topologische Sortierung berechnet.",
-    "tags": ["HTML", "CSS", "JS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS", "JS"]
   },
   {
-    "id": "4.4.",
+    "id": "4.4",
     "titel": "Topsort",
     "subtitel": "Fibonaccci Funktion",
-    "vorlesungs": "4. JavaScript",
+    "vorlesung": "4. JavaScript",
     "beschreibung": "Aufgabe: Schreiben Sie in JavaScript eine Funktion topsort(), die eine topologische Sortierung berechnet.",
-    "tags": ["HTML", "CSS", "JS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS", "JS"]
   },
   {
-    "id": "6.2.",
+    "id": "6.2",
     "titel": "Textanalyse mit filter-map-reduce",
     "subtitel": "Funktionale Programmierung",
-    "vorlesungs": "6. Functional",
+    "vorlesung": "6. Functional",
     "beschreibung": "Aufgabe: Schreiben Sie in JavaScript eine Textanalyse. Ermitteln Sie die häufigsten Begriffe im Text Plagiatsresolution. Filtern Sie dabei alle Stoppworte und HTML-Tags. Reduzieren Sie das Ergebnis auf die 3 häufigsten Begriffe.",
-    "tags": ["HTML", "CSS", "JS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS", "JS"]
   },
   {
-    "id": "7.1.",
+    "id": "7.1",
     "titel": "Performanzmessungen von DOM-Operationen ",
     "subtitel": "",
-    "vorlesungs": "7. DOM",
+    "vorlesung": "7. DOM",
     "beschreibung": "Aufgabe: Implementieren Sie Performanzmessungen zum Vergleich von innerHTML, innerText, textContent und outerHTML selbstständig in JavaScript durch Nutzung der DOM API. Geben Sie die Messergebnisse als Tabelle aus.",
-    "tags": ["HTML", "CSS", "JS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS", "JS"]
   },
   {
-    "id": "8.1.",
+    "id": "8.1",
     "titel": "Promises",
     "subtitel": "",
-    "vorlesungs": "8. async",
+    "vorlesung": "8. async",
     "beschreibung": "Aufgabe: Laden Sie mit der fetch-API parallel zwei Text-Dateien. Geben Sie auf einer Webseite den Inhalt beider Dateien zeilenweise aus, wobei der Anfang der Zeile aus A.txt und das Ende aus B.txt stammen soll.",
-    "tags": ["HTML", "CSS", "JS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS", "JS"]
   },
   {
-    "id": "8.2.",
+    "id": "8.2",
     "titel": "async / await",
     "subtitel": "",
-    "vorlesungs": "8. async",
+    "vorlesung": "8. async",
     "beschreibung": "Aufgabe: Aufgabe 8.1 mit async / await",
-    "tags": ["HTML", "CSS", "JS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS", "JS"]
   },
   {
-    "id": "8.3.",
+    "id": "8.3",
     "titel": "WWW-Navigator",
     "subtitel": "",
-    "vorlesungs": "8. async",
+    "vorlesung": "8. async",
     "beschreibung": "Aufgabe: Schreiben Sie einen Navigator für die Fachbegriffe des WWW zu den Oberthemen HTML, CSS und JavaScript. Im Hauptmenü sollen diese 3 Oberthemen zur Auswahl stehen. Im Untermenü soll eine zugehörige Liste von Fachbegriffen zum jeweiligen ausgewählten Oberthema stehen. ",
-    "tags": ["HTML", "CSS", "JS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "tags": ["HTML", "CSS", "JS"]
   },
   {
-    "id": "9.1.",
+    "id": "9.1",
     "titel": "Komponente in Vue.js",
     "subtitel": "",
-    "vorlesungs": "8. async",
-    "beschreibung": "Aufgabe: Schreiben Sie einen Navigator für die Fachbegriffe des WWW zu den Oberthemen HTML, CSS und JavaScript. Im Hauptmenü sollen diese 3 Oberthemen zur Auswahl stehen. Im Untermenü soll eine zugehörige Liste von Fachbegriffen zum jeweiligen ausgewählten Oberthema stehen. ",
-    "tags": ["HTML", "CSS", "JS"],
-    "link": "php-www-navigator",
-    "githublink": "link"
+    "vorlesung": "9. Vue",
+    "beschreibung": "Aufgabe: Schreiben Sie eine Vue.js Single File Component mit einem Text-Eingabefeld und 3 Ausgabefeldern, in denen man während des Tippens sehen kann, (a) wie viele Buchstaben (b) wie viele Leerzeichen und (c) wie viele Worte man in das Text-Eingabefeld bereits eingegeben hat.\nBetten Sie Ihre Komponente in eine Webseite zweimal ein und testen Sie, ob beide Komponenten unabhängig voneinander sind.",
+    "tags": ["HTML", "CSS", "JS", "Vue.js"]
+  },
+  {
+    "id": "9.2",
+    "titel": "Menü-Komponente in Vue.js",
+    "subtitel": "",
+    "vorlesung": "9. Vue",
+    "beschreibung": "Aufgabe: Schreiben Sie eine möglichst flexible Vue.js Single File Component für Menüs und wenden Sie diese in derselben Webseite zweimal an, einmal horizontal, das andere Mal vertikal.",
+    "tags": ["HTML", "CSS", "JS", "Vue.js"]
+  },
+  {
+    "id": "9.3",
+    "titel": "Vue.js WWW-Navigator",
+    "subtitel": "",
+    "vorlesung": "9. Vue",
+    "beschreibung": "Aufgabe: Schreiben Sie Ihren WWW-Navigator als SPA in Vue.js.",
+    "tags": ["HTML", "CSS", "JS", "Vue.js"]
+  },
+  {
+    "id": "10.1",
+    "titel": "Registrierung mit PHP",
+    "subtitel": "",
+    "vorlesung": "10. PHP",
+    "beschreibung": "Aufgabe: Erstellen Sie mit PHP 5 auf www2.inf.h-brs.de ein Registrierungsformular. Speichern Sie die eingegebenen Daten persistent in einer Datei auf www2.inf.h-brs.de. Schreiben Sie Ihre PHP-Scripte so, dass es zu keinen Nebenläufigkeitsartefakten (z.B. Lost Update) kommen kann, egal wie viele Nutzer sich gleichzeitig registrieren.",
+    "tags": ["HTML", "CSS", "JS", "PHP"]
+  },
+  {
+    "id": "10.2",
+    "titel": "Login mit PHP",
+    "subtitel": "",
+    "vorlesung": "10. PHP",
+    "beschreibung": "Aufgabe: Schreiben Sie eine sichere PHP-Lösung für Login, das die persistierten Registrierungsdaten aus der letzten Aufgabe nutzt.",
+    "tags": ["HTML", "CSS", "JS", "PHP"]
+  },
+  {
+    "id": "10.3",
+    "titel": "Login mit PHP",
+    "subtitel": "",
+    "vorlesung": "10. PHP",
+    "beschreibung": "Aufgabe: Schreiben Sie eine sichere PHP-Lösung für Login, das die persistierten Registrierungsdaten aus der letzten Aufgabe nutzt.",
+    "tags": ["HTML", "CSS", "JS", "PHP"]
   }
 ]

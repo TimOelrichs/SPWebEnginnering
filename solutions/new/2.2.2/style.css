@@ -1,0 +1,18 @@
+.container {
+  border: 1px solid black;
+  padding: 2px;
+  width: 95vw;
+}
+
+img {
+  display: none;
+  width: 95vw;
+}
+
+input[type='checkbox'] {
+  float: left;
+}
+
+input[type='checkbox']:checked ~ div > img {
+  display: block;
+}

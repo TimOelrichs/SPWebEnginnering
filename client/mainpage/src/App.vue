@@ -133,16 +133,12 @@ a:hover{
   padding: 5px 30px;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s
 }
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+.fade-enter, .fade-leave-to {
+  opacity: 0
 }
-
 
 </style>
 
