@@ -20,10 +20,17 @@
     </div>
     <div class="commentsections">
       <div class="commentsHeader">
-        <div><i class="material-icons">keyboard_arrow_down</i></div>
+        <div v-on:click="showComments = !showComments">
+          <i  v-if="!showComments" class="material-icons">keyboard_arrow_down</i>
+          <i  v-if="showComments" class="material-icons">keyboard_arrow_up</i>
+          </div>
         </div>
-      <div v-if="showComment" class="comments">
-
+      <div v-if="showComments" class="comments">
+        <p>works</p>
+        <div class="commentform">
+          <textarea v-model="commentText"></textarea>
+          <button>Senden</button>
+        </div>
       </div>
     </div>
   </div>
@@ -41,6 +48,8 @@
           'https://github.com/TimOelrichs/SPWebEnginnering/tree/main/solutions/',
         solutionBase:
           'http://www2.inf.h-bonn-rhein-sieg.de/~toelri2s/solutions/',
+        showComments: false,
+        commentText: "",
       };
     },
   };
@@ -87,6 +96,19 @@
   .commentsections{
     margin-top: 5px;
      border-top: 1px solid #233554;
+  }
+
+  .commentform{
+    display: flex;
+    padding: 5px;
+  }
+  .commentform textarea{
+    width: 80%;
+    height: 30px;
+    color: white;
+    border: solid 1px white;
+    background-color: #020c1b;
+    padding: 5px;
   }
 
   .tags {
