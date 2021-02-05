@@ -8,22 +8,51 @@
 <body>
     <h1>Survey From</h1>
     <form action="">
-        <p>Let us know how we can improve freeCodeCamp</p>
-            <label for="name">* Name</label>
-            <input type="text" name="name" value="Enter your name"><br>
-    
-        <label for="name">* Email</label>
-        <input type="email" name="email" value="Enter your email"><br>
-        <label for="age">* Age</label>
-        <input type="number" name="age" value="Age"><br>
-        <label for="role">Which option best describes your current role?</label>
-        <select name="role">
+        <p class="heading">Let us know how we can improve freeCodeCamp</p>
+         <div class="left">
+          <label  for="name">* Name</label>
+         </div>
+         <div class="right">
+          <input type="text" name="name" value="Enter your name">
+        </div>
+        <div class="left">
+          <label  for="name">* Email</label>
+         </div>
+         <div class="right">
+          <input  type="email" name="email" value="Enter your email">
+        </div>
+        <div class="left">
+          <label  for="age">* Age</label>
+         </div>
+         <div class="right">
+          <input  type="number" name="age" value="Age"><br>
+        </div>
+        <div class="left">
+           <label for="role">Which option best describes your current role?</label>
+         </div>
+         <div class="right">
+          <select name="role">
             <option value="student">Student</option>
         </select>
-        <div class="row">
-        <p class="label">* How likels is that you woeld recomend freeCodeCamp to a friend?</p>
-          <div class="rgroup">
-            
+        </div>
+        <div class="left">
+          <label for="age">* How likely is that you would recommend freedCodeCamp tp a friedn?</label>
+        </div>
+        <div class="right">
+
+       </div>
+       <div class="left">
+          
+      </div>
+      <div class="right">
+
+     </div>
+      
+       
+     
+      
+        <p class="left label">* How likels is that you woeld recomend freeCodeCamp to a friend?</p>
+          <div class="right rgroup">
             <input type="radio" name="recommend" value="defintely" id="def">
             <label for="def">Definitely</label><br>
             
@@ -33,45 +62,66 @@
             <input type="radio" id="ns" name="recommend" value="notsure">
             <label for="ns">Not sure</label><br>
          </div>
-        </div>
-         <label for="role">What do you like most in FCC:</label>
-        <select name="option" value="Select an option">
+   
+         <label class="left" for="role">What do you like most in FCC:</label>
+        <select class="right" name="option" value="Select an option">
             <option value="student">Student</option>
         </select>
         </div>
-
-        <div class="row">
-        <p class="label">* How likels is that you woeld recomend freeCodeCamp to a friend?</p>
-        <div class="cgroup">
+    
+        <p class="left">* How likels is that you woeld recomend freeCodeCamp to a friend?</p>
+        <div class="right">
           <input type="checkbox" name="future" value="defintely" id="ffp">
           <label for="ffp">Frond-end-Projects</label> <br>
           <input type="checkbox" id="bep" name="future" value="maybe">
           <label for="bep">Back-end-Projects</label><br>
           <input type="checkbox" id="dv" name="future" value="notsure">
           <label for="dv">Data Visualization</label> <br>
-       </div>
+
        </div>
     </form>
 
 <style>
     body {
   font-family: Arial, Helvetica, sans-serif;
-  margin: o;
+  margin: 0;
   background-color: #b2d6d1;
   text-align: center;
 }
 
 * {
-  margin-bottom: 20px;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+
+html, body{
+  width: 100%;
+  height: 100%;
 }
 
 form {
   background-color: white;
   text-align: center;
-  justify-content: center;
+  border-radius: 5px;
   padding: 2px;
-  margin: 5px;
+  margin: 5px 15px;
 }
+
+.left{
+  display: inline-block;
+  width: 48%;
+  text-align: right;
+}
+.right{
+  display: inline-block;
+  width: 48%;
+  text-align: left;
+}
+
+.heading{
+  margin-bottom: 15px;
+}
+ 
 
 label {
   display: inline-block;
@@ -81,18 +131,21 @@ label {
 }
 
 .label {
-  float: left;
   width: 330px;
   height: 100px;
+  margin-bottom: 15px;
 }
 
-input,
-select {
+input ,
+select{
+  display: inline-block;
   padding: 2px;
   border: 1px solid lightgrey;
-  border-radius: 5%;
-  width: 20vw;
-  height: 20px;
+  border-radius: 3px;
+  width: 200px;
+  height: 30px;
+  padding: 4px;
+  text-align: left;
 }
 
 select {
@@ -101,15 +154,8 @@ select {
 
 input [type='radio'],
 input [type='checkbox'] {
-  height: 10px;
-  width: 10px;
-}
-
-.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  height: 5px;
+  width: 5px;
 }
 
 </style>

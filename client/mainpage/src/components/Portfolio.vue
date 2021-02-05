@@ -3,6 +3,7 @@
   <div id="solutions">
     <div class="filter" id="filter">
       <input type="text" v-model="searchText" placeholder="Filter nach Titel oder Nr.">
+      <p>{{this.solutionCount}} Lösungen</p>
     </div>
     <div id="cards">
     <Card v-for="solution in filteredSolutions" :key="solution.index" :solution="solution">
@@ -52,6 +53,9 @@ computed:{
   filteredSolutions : function (){
     return this.solutions.filter( s => s.titel.includes(this.searchText) || s.id.startsWith(this.searchText));
   },
+  solutionCount: function(){
+    return this.filteredSolutions.length;
+  }
 
 },
 }
@@ -63,7 +67,7 @@ computed:{
 <style>
 #solutions{
   margin: 0px;
-  margin-top: 25px;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   align-content: flex-start;
@@ -74,6 +78,7 @@ computed:{
 }
 
 .filter{
+  display: flex;
   position: fixed;
   top: 60px;
   widows: 100%;
