@@ -18,6 +18,14 @@
       <a class="btn" :href="githubBase + solution.id" target="_blank">Github</a>
       <a class="btn" :href="solutionBase + solution.id" target="_blank">View</a>
     </div>
+    <div class="commentsections">
+      <div class="commentsHeader">
+        <div><i class="material-icons">keyboard_arrow_down</i></div>
+        </div>
+      <div v-if="showComment" class="comments">
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -39,6 +47,8 @@
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
   .card {
     /* card design from https://codepen.io/sdthornton/pen/wBZdXq */
     position: relative;
@@ -73,6 +83,10 @@
     width: 100%;
     bottom: 0px;
     margin-top: 15px;
+  }
+  .commentsections{
+    margin-top: 5px;
+     border-top: 1px solid #233554;
   }
 
   .tags {

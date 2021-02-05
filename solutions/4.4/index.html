@@ -11,80 +11,22 @@
         <div id="task"></div>
         <div id="order"></div>
     </div>
-    <div>
+    <div id="newTaskForm">
         <label for="">Neue Aufgabe hinzufügen:</label>
         <input type="text" name="task" id="newtask">
-        <input type="button" onclick="addTask()">
+        <input type="button" value="+" onclick="addTask()">
     </div>
-    </form>
-    <form id="tasks">
-        <label for="">Neue Aufgabe hinzufügen:</label>
-        <input type="text" name="task" id="newtask">
-        <input type="submit" value="Add">
-    </form>
     
-<script>
-
-function addTask(){
-    let task = document.getElementById("newtask").value.trim();
-    
-}
-
-        
-var mytasks = [["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "pruefen"]];
-
-function makeDependenciesObj(tasks){
-    console.log("Here we go");
-    var dependiciesObj = {};
-    order = [];
-    //Fill dependiciesObj with keys
-    tasks.forEach(t => {
-        if (!dependiciesObj[t[0]]) {
-            dependiciesObj[t[0]] = [];
-        }
-        if (!dependiciesObj[t[1]]) {
-            dependiciesObj[t[1]] = [t[0]];
-        } else {
-            dependiciesObj[t[1]].push(t[0]);
-        }
-    });
-    console.log(dependiciesObj);
-    return dependiciesObj;
-}
-
-function topsort(dependiciesObj) {
-    
-    var keys = Object.keys(dependiciesObj);
-
-    while (keys.length) {
-        for (var k of keys) {
-            var dependencies = dependiciesObj[k];
-            if (dependencies.every(d => order.includes(d))) {
-                order.push(k);
-                keys.splice(keys.indexOf(k), 1);
-            }
-        };
+    <div id="tasksForm">
+       <div>
+           <p>Aufgabe</p>
+           <p>Abhängikeit</p>
+       </div>
+       </div>
        
-    }
-    console.log(`order is : ${order}`)
-    return order;
-}
+       <input type="button" value="topologisch sortiern" onclick="sort()">
+    
+<script src="script.js"></script>
 
-var dObj = makeDependenciesObj(mytasks)
-document.getElementById("task").innerText = mytasks;
-document.getElementById("order").innerText = "Correct Order:" + topsort(dObj);
-
-
-//Tests
-//Arange   
-var tasks1 = [["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "pruefen"]];
-//Act
-var d = makeDependenciesObj(tasks1);
-var order = topsort(d);
-var expected = [ 'schlafen', 'essen', 'studieren', 'pruefen' ]
-//Assert
-console.assert(String(order) === String(expected))
-
-    </script>
 </body>
 </html>
