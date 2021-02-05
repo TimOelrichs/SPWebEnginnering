@@ -1,33 +1,45 @@
 * {
-  margin: 0;
+  margin: 0px;
+  box-sizing: border-box;
 }
 
-div * {
-  min-height: 25vh;
-  min-width: 20vw;
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
 
 header {
+  margin: 20px 30px;
   background-color: red;
-  width: 100vw;
+  width: calc(100% - 60px);
+  height: calc(25vh - 40px);
 }
 nav {
+  margin: 0px 5px 20px 30px;
   background-color: greenyellow;
-  min-width: 20vw;
+  width: calc(25% - 35px);
+  height: calc(75vh - 35px);
 }
 main {
+  margin: 0px 5px 30px 5px;
   background-color: blue;
-  min-width: 500px;
-  width: 60vw;
+
+  width: calc(50% - 10px);
+  height: calc(75vh - 35px);
 }
 aside {
+  margin: 0px 30px 30px 5px;
   background-color: rgb(234, 62, 254);
-  width: 20vw;
+  width: calc(25% - 35px);
+  height: calc(75vh - 35px);
 }
 
 #site {
+  width: 100%;
+  height: auto;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 #navmain {
@@ -37,21 +49,43 @@ aside {
   height: 50vw;
 }
 
-@media screen and (max-width: 835px) {
+@media screen and (max-width: 1023px) {
+  header {
+    margin: 15px 15px;
+    width: calc(100% - 30px);
+  }
+  nav {
+    margin: 0px 2.5px 2.5px 15px;
+    background-color: greenyellow;
+    width: calc(35% - 17.5px);
+    height: 100vh;
+  }
   main {
-    min-width: 500px;
-    width: 80vw;
+    margin: 0px 15px 2.5px 2.5px;
+    width: calc(65% - 17.5px);
+    height: 100vh;
   }
   aside {
-    width: 100vw;
+    margin: 0px 15px 2.5px 15px;
+    width: calc(100% - 30px);
+    height: 15vh;
   }
 }
 
-@media screen and (max-width: 635px) {
-  main {
+@media screen and (max-width: 600px) {
+  header,
+  main,
+  nav,
+  aside {
+    margin: 0px;
     width: 100vw;
   }
-  nav {
-    width: 100vw;
+  header,
+  nav,
+  aside {
+    height: 15vh;
+  }
+  main {
+    height: 100vh;
   }
 }
