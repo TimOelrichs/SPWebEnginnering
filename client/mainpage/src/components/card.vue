@@ -19,17 +19,25 @@
       <a class="btn" :href="solutionBase + solution.id" target="_blank">View</a>
     </div>
     <div class="commentsections">
-      <div class="commentsHeader">
-        <div v-on:click="showComments = !showComments">
-          <i  v-if="!showComments" class="material-icons">keyboard_arrow_down</i>
-          <i  v-if="showComments" class="material-icons">keyboard_arrow_up</i>
-          </div>
+      <div class="commentsHeader"  v-on:click="showComments = !showComments">
+        
+            <i  v-if="!showComments" class="material-icons">keyboard_arrow_down</i>
+            <i  v-if="showComments" class="material-icons">keyboard_arrow_up</i>
+            <div> {{solution.comments.length}} Kommentare</div>
+            <div>0 Views</div>
+      
         </div>
       <div v-if="showComments" class="comments">
-        <p>works</p>
+        <Comment v-for="comment in solution.comments" :key="comment" :comment="comment">
+
+        </Comment>
         <div class="commentform">
+          <label for="user">Name:</label>
+          <input type="text" v-model="commentUser" name="user">
+          <div>
           <textarea v-model="commentText"></textarea>
-          <button>Senden</button>
+          <button @click="postComment(solution.id)">Senden</button>
+          </div>
         </div>
       </div>
     </div>
@@ -37,8 +45,13 @@
 </template>
 
 <script>
-  //import router from "../router";
+
+import Comment from './Comment.vue';
+
   export default {
+    components: {
+    Comment
+  },
     props: {
       solution: Object,
     },
@@ -50,8 +63,17 @@
           'http://www2.inf.h-bonn-rhein-sieg.de/~toelri2s/solutions/',
         showComments: false,
         commentText: "",
+        commentUser: "",
       };
     },
+    methods:{
+      postComment: function (id) {
+        console.log(id);
+
+        window.bus.$emit('addComment', { id , comment : { user: this.commentUser, comment: this.commentText, timestamp : new Date().toISOString() }})
+        this.commentText = "";
+      }
+    }
   };
 </script>
 
@@ -94,6 +116,7 @@
     margin-top: 15px;
   }
   .commentsections{
+    width: 100%;
     margin-top: 5px;
      border-top: 1px solid #233554;
   }
@@ -101,6 +124,13 @@
   .commentform{
     display: flex;
     padding: 5px;
+  }
+
+  .commentsHeader{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
   }
   .commentform textarea{
     width: 80%;
@@ -110,6 +140,7 @@
     background-color: #020c1b;
     padding: 5px;
   }
+
 
   .tags {
     display: flex;

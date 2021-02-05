@@ -41,7 +41,10 @@ function init(){
 
 function sort() {
     let inputs = document.querySelectorAll('input[type="text"]:not(#newtask)');
-    console.log(inputs)
+    for (let index = 0; index < inputs.length; index+2) {
+        const element = array[index];
+        
+    }
 }
 
 var mytasks = [["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "pruefen"]];

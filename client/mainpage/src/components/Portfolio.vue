@@ -37,7 +37,15 @@ cache: 'no-store'
     this.tags = this.getTags();
     //this.tags.forEach( t => tagsFilter[t] = true); 
 
-},methods:{
+},
+mounted(){
+  window.bus.$on('addComment', commentObj => {
+    console.log(commentObj)
+    this.solutions.filter( s => s.id == commentObj.id)[0].comments.push(commentObj.comment);
+    console.log(this.solutions.filter( s => s.id == commentObj.id)[0].comments)
+    })
+},
+methods:{
   getTags: function () {
     /*
     let set = new Set([]);
