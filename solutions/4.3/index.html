@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fibonnaci-Zahlen</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body onload="fibonacci(2000);">
-    <table id="table" border="1">
+    <table id="table" >
         <tr>
         <th colspan="2">Fibbonaci-Zahlen</th>
         </tr>
@@ -15,26 +16,20 @@
             <th>Zahl</td>
         </tr>
     </table>
+    <h2 id="msg">Berechne die ersten 2000 Fibonnaci-Zahlen...</h2>
  <script>
     var counter = 1;
     var first = true;
     function fibonacci(to){
-        var a = 0, b = 1, tmp;
+        var a = BigInt(0), b = BigInt(1), tmp = BigInt(0);
         add2Table(a,b);
-        for (let i = 0; i<=to;i++){
+        for (let i = 0; i<=to-3;i++){
                tmp = a;
                a = b;
                b = tmp + b;
                add2Table(b);
-               if(b>Number.MAX_VALUE){
-                   if(first){
-                    console.log(counter)
-                    console.log(b)
-                    first = false; 
-                   }
-                   
-               }
         }
+        document.getElementById('msg').innerText = "";
     }
 
     function add2Table(...args){
@@ -50,8 +45,6 @@
         t.appendChild(tr)
         })  
     }
-
-
  </script>    
 </body>
 </html>
