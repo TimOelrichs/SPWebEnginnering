@@ -40,10 +40,19 @@ cache: 'no-store'
 },
 mounted(){
   window.bus.$on('addComment', commentObj => {
-    console.log(commentObj)
+    
     this.solutions.filter( s => s.id == commentObj.id)[0].comments.push(commentObj.comment);
     console.log(this.solutions.filter( s => s.id == commentObj.id)[0].comments)
-    })
+  })
+
+  window.bus.$on('incView', id => {
+      this.solutions.filter( s => s.id == id)[0].view++;
+  })
+
+  window.bus.$on('solution-liked', id => {
+      this.solutions.filter( s => s.id == id)[0].likes++;
+  })
+
 },
 methods:{
   getTags: function () {

@@ -1,6 +1,14 @@
 <template>
   <div class="card">
-    <h4>{{ solution.vorlesung }}</h4>
+    <div class="cardheader">
+      <h4>{{ solution.vorlesung }}</h4>
+        <div v-on:click="like(solution.id)" class="likes">
+          <i v-if="!hasLiked" class="material-icons">thumb_up_off_alt</i>
+          <i v-if="hasLiked" class="material-icons">thumb_up</i>
+           {{solution.likes}}  Likes</div>
+        <div>{{solution.view}}  {{solution.view == 1 ? "View" : "Views"}}</div>
+    </div>
+    
     <div class="cardcenter">
       <h5>
         <span class="green">{{ solution.id }}</span> {{ solution.titel }}
@@ -16,26 +24,27 @@
     </div>
     <div class="cardbottom">
       <a class="btn" :href="githubBase + solution.id" target="_blank">Github</a>
-      <a class="btn" :href="solutionBase + solution.id" target="_blank">View</a>
+      <a class="btn" :href="solutionBase + solution.id" target="_blank" v-on:click="incViews(solution.id)">View</a>
     </div>
+   
     <div class="commentsections">
       <div class="commentsHeader"  v-on:click="showComments = !showComments">
-        
             <i  v-if="!showComments" class="material-icons">keyboard_arrow_down</i>
             <i  v-if="showComments" class="material-icons">keyboard_arrow_up</i>
             <div> {{solution.comments.length}} Kommentare</div>
-            <div>0 Views</div>
-      
+            <div>
+              
+            </div>
         </div>
       <div v-if="showComments" class="comments">
-        <Comment v-for="comment in solution.comments" :key="comment" :comment="comment">
+        <Comment v-for="comment in solution.comments" :key="comment.comment" :comment="comment">
 
         </Comment>
         <div class="commentform">
           <label for="user">Name:</label>
           <input type="text" v-model="commentUser" name="user">
           <div>
-          <textarea v-model="commentText"></textarea>
+          <input type="text" v-model="commentText">
           <button @click="postComment(solution.id)">Senden</button>
           </div>
         </div>
@@ -64,6 +73,7 @@ import Comment from './Comment.vue';
         showComments: false,
         commentText: "",
         commentUser: "",
+        hasLiked: false,
       };
     },
     methods:{
@@ -72,6 +82,15 @@ import Comment from './Comment.vue';
 
         window.bus.$emit('addComment', { id , comment : { user: this.commentUser, comment: this.commentText, timestamp : new Date().toISOString() }})
         this.commentText = "";
+      },
+      incViews: function(id){
+        window.bus.$emit('incView', id)
+      },
+      like: function (id){
+        this.hasLiked = !this.hasLiked;
+        if(this.hasLiked) window.bus.$emit('solution-liked', id)
+        else window.bus.$emit('solution-disliked', id)
+        
       }
     }
   };
@@ -97,9 +116,19 @@ import Comment from './Comment.vue';
     top: -3px;
   }
 
+  .likes{
+    cursor: pointer;
+  }
+
   .card img {
     height: 100px;
     width: 50px;
+  }
+
+  .cardheader{
+    display: flex;
+    justify-content: space-between;
+    width: 100%
   }
   .cardcenter {
     border-top: 1px solid #233554;
@@ -127,11 +156,12 @@ import Comment from './Comment.vue';
   }
 
   .commentsHeader{
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     width: 100%;
-
   }
+
   .commentform textarea{
     width: 80%;
     height: 30px;
