@@ -4,6 +4,14 @@
     <div class="filter" id="filter">
       <input type="text" v-model="searchText" placeholder="Filter nach Titel oder Nr.">
       <p>{{this.solutionCount}} Lösungen</p>
+      <select @change="sort($event)">
+        <option>Vorlesung: aufsteigend</option>
+        <option>Vorlesung: absteigend</option>
+        <option>Views: aufsteigend</option>
+        <option>Views: absteigend</option>
+        <option>Likes: aufsteigend</option>
+        <option>Likes: absteigend</option>
+      </select>
     </div>
     <div id="cards">
     <Card v-for="solution in filteredSolutions" :key="solution.index" :solution="solution">
@@ -63,6 +71,56 @@ methods:{
     });
     return Array.from(set);
     */
+  },
+  sort: function(event){
+    console.log("sort()");
+    let value = event.target.value;
+    switch(value){
+      case "Vorlesung: aufsteigend":
+        this.solutions = this.solutions.sort((a, b) => {
+          let number = function(solution){
+            return  solution.vorlesung.substring(0,2).replace(".", "")
+          } 
+          return number(a)-number(b);
+        });
+        break;
+      case "Vorlesung: absteigend":
+         this.solutions = this.solutions.sort((a, b) => {
+          let number = function(solution){
+            return  solution.vorlesung.substring(0,2).replace(".", "")
+          } 
+          return number(b)-number(a);
+        });
+        break;
+          case "Views: aufsteigend":
+        this.solutions = this.solutions.sort((a, b) => {
+          return b.view-a.view;
+        });
+        break;
+          case "Views: absteigend":
+        this.solutions = this.solutions.sort((a, b) => {
+          return b.view-a.view;
+        });
+        break;
+               case "Likes: aufsteigend":
+        this.solutions = this.solutions.sort((a, b) => {
+          return a.likes-b.likes;
+        });
+        break;
+          case "Likes: absteigend":
+        this.solutions = this.solutions.sort((a, b) => {
+          return b.likes-a.likes;
+        });
+        break;
+    }
+
+/*
+        <option></option>
+        <option>Views: aufsteigend</option>
+        <option>Views: absteigend</option>
+        <option>Likes: aufsteigend</option>
+        <option>Likes: absteigend</option>
+        */
   }
  
 },
@@ -72,6 +130,11 @@ computed:{
   },
   solutionCount: function(){
     return this.filteredSolutions.length;
+  },
+  tilesView: function (){
+    return this.tilesViewON ? {
+
+    } : "";
   }
 
 },
@@ -103,13 +166,13 @@ computed:{
   z-index: 100;
 }
 
-input{
+input, select{
   color: #64ffda;
   border: solid 1px white;
   background-color: #020c1b;
 }
 
-input[type=text]{
+input[type=text], select{
   height: 30px;
   border-radius: 2px;
   padding: 2px 15px;
