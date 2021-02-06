@@ -1,7 +1,5 @@
 class SolutionsServive {
 
-    url = "http://www2.inf.h-bonn-rhein-sieg.de/~toelri2s/backend/solutions/server.php";
-    
     constructor() {
         this.url = "http://www2.inf.h-bonn-rhein-sieg.de/~toelri2s/backend/api/solutions/server.php";
     }
@@ -17,43 +15,39 @@ class SolutionsServive {
    }
 
     async incView(id) {
-        return await(await fetch(this.url, {
+        return await(await fetch(new Request(this.url), {
             method: 'POST',
             mode: 'cors',
             cache: 'no-store',
-            body: JSON.stringify({ action: "incView", id: id }),
-            headers: JSON.stringify({'Content-Type': 'application/json'})
+            body: JSON.stringify({ action: "incView", id: id })
         }));
     }
 
     async incLike(id){
         return await(await fetch(new Request(this.url), {
-            method: 'GET',
+            method: 'POST',
             mode: 'cors',
             cache: 'no-store',
-            body: JSON.stringify({ action: "incLike", id }),
-            headers:{"Content-Type:": "application/json"}
-        })).json();
+            body: JSON.stringify({ action: "incLike", id: id })
+        }));
     }
 
     async decLikes(id) {
         return await(await fetch(new Request(this.url), {
-            method: 'GET',
+            method: 'POST',
             mode: 'cors',
             cache: 'no-store',
-            body: JSON.stringify({ action: "decLike", id }),
-            headers:{"Content-Type:": "application/json"}
-        })).json();
+            body: JSON.stringify({ action: "decView", id: id })
+        }));
     }
 
     async postComment(commentObj) {
-        return await(await fetch(new Request(this.url), {
-            method: 'GET',
+        return await (await fetch(new Request(this.url), {
+            method: 'POST',
             mode: 'cors',
             cache: 'no-store',
-            body: JSON.stringify({ action: "decLike", id: commentObj.id, comment: commentObj.comment }),
-            headers:{"Content-Type:": "application/json"}
-        })).json();
+            body: JSON.stringify({ action: "postComment", id: commentObj.id, comment: commentObj.comment }),
+        }));
     }
 
 }

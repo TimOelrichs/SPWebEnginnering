@@ -22,5 +22,13 @@ export default {
 .comment{
     padding: 10px;
 }
+.comment h4{
+    margin-right: 2px;
+}
+
+p{
+    font-size: 12px;
+    margin: 7px 2px;
+}
 
 </style>

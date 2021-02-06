@@ -44,7 +44,7 @@
           <div class="flex">
             <label class="block" for="comment">Kommentar:</label>
             <input type="text" v-model="commentText" name="comment">
-            <button @click="postComment(solution.id)">Senden</button>
+            <button class="btn bg-dark" @click="postComment(solution.id)">Senden</button>
           </div>
         </div>
       </div>
@@ -125,6 +125,10 @@ import Comment from './Comment.vue';
     width: 100px;
   }
 
+  .bg-dark{
+    background-color: #020c1b;
+  }
+
   .likes{
     cursor: pointer;
   }
@@ -184,6 +188,7 @@ import Comment from './Comment.vue';
     background-color: #020c1b;
     padding: 5px;
   }
+
 
 
   .tags {
