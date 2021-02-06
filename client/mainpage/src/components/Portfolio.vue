@@ -61,6 +61,10 @@ mounted(){
       this.solutions.filter( s => s.id == id)[0].likes++;
   })
 
+   window.bus.$on('solution-disliked', id => {
+      this.solutions.filter( s => s.id == id)[0].likes--;
+  })
+
 },
 methods:{
   getTags: function () {
@@ -165,9 +169,13 @@ computed:{
   background-color:#020c1b;
   z-index: 100;
 }
+.filter select{
+  margin-left: auto;
+}
+
 
 input, select{
-  color: #64ffda;
+  color: grey;
   border: solid 1px white;
   background-color: #020c1b;
 }
