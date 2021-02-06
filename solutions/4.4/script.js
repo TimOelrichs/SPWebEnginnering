@@ -2,11 +2,18 @@
 window.onload = init;
 
 var depCounter = 0;
-function addTask(){
-    let task = document.getElementById("newtask").value.trim();
-    addDependencyToForm(task);
-    
+var mytasks = [["Unterhose", "Hose"], ["Hose", "Mantel"], ["Hose", "Schuhe"], ["Socken", "Schuhe"], ["Unterhemd", "Pullover"],["Pullover", "Mantel"]];
+//var mytasks = [["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "pruefen"]];
+
+
+//init functions
+function init(){
+    console.log(mytasks)
+    mytasks.forEach( task => {
+        addDependencyToForm(task[0], task[1]);
+    })
 }
+
 
 function addDependencyToForm(task, depenency){
     let tasksForm = document.getElementById("tasksForm");
@@ -27,27 +34,58 @@ function addDependencyToForm(task, depenency){
         tasksForm.removeChild(event.target.parentNode)
     })
     div.appendChild(btn);
-    tasksForm.appendChild(div);
-    
+    tasksForm.appendChild(div);   
 }
 
 
-function init(){
-    console.log(mytasks)
-    mytasks.forEach( task => {
-        addDependencyToForm(task[0], task[1]);
-    })
+//Form functions
+
+function addTask(){
+    let task = document.getElementById("newtask").value.trim();
+    task.value = "";
+    addDependencyToForm(task);
+    
+}
+
+function reset() {
+    document.getElementById("tasksForm").innerHTML = "";
+    document.getElementById("result").innerHTML = "";
+    addDependencyToForm("");
 }
 
 function sort() {
     let inputs = document.querySelectorAll('input[type="text"]:not(#newtask)');
-    for (let index = 0; index < inputs.length; index+2) {
-        const element = array[index];
-        
+    let tasks = [];
+    for (let index = 0; index < inputs.length; index = index+2) {
+        tasks.push([inputs[index].value , inputs[index + 1].value]) 
     }
+    let order = topsort(makeDependenciesObj(tasks));
+    writeResult(order);
 }
 
-var mytasks = [["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "pruefen"]];
+function writeResult(order) {
+    let result = document.getElementById('result');
+    result.innerHTML = "";
+    let index = 0;
+    order.forEach((task) => {
+        let div = document.createElement('div');
+        div.classList.add('task');
+        div.textContent = task;
+        result.appendChild(div)
+        
+        if (index != order.length-1) {
+            let arrow = document.createElement('div');
+            arrow.classList.add('arrow');
+            arrow.innerHTML = '&#129046';
+            result.appendChild(arrow);
+            index++
+        }
+       
+    })
+}
+
+
+//topsort functions
 
 function makeDependenciesObj(tasks){
     
@@ -86,9 +124,11 @@ function topsort(dependiciesObj) {
     return order;
 }
 
+
+/*
 var dObj = makeDependenciesObj(mytasks)
-document.getElementById("task").innerText = mytasks;
-document.getElementById("order").innerText = "Correct Order:" + topsort(dObj);
+//document.getElementById("task").innerText = mytasks;
+//document.getElementById("order").innerText = "Correct Order:" + topsort(dObj);
 
 
 //Tests
@@ -100,3 +140,4 @@ var order = topsort(d);
 var expected = [ 'schlafen', 'essen', 'studieren', 'pruefen' ]
 //Assert
 console.assert(String(order) === String(expected))
+*/

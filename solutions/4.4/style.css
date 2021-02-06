@@ -1,0 +1,66 @@
+* {
+  margin: 0px;
+}
+body,
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100vw;
+}
+h2 {
+  margin: 30px;
+}
+
+header {
+  width: 100%;
+  padding: 15px;
+  height: 50px;
+  color: white;
+  background-color: deepskyblue;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type='text'] {
+  width: 25%;
+}
+.container {
+  text-align: center;
+  margin-top: 30px;
+  width: 80%;
+  padding: 50px;
+  border-radius: 15px;
+  border: 1px solid lightblue;
+}
+
+.task {
+  margin: 10px 30px;
+  padding: 5px 30px;
+  border-radius: 50%;
+  background-color: deepskyblue;
+  font-weight: bold;
+}
+
+.arrow {
+  font-size: 40px;
+}
+
+.result {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.inblock {
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.w-25 {
+  width: 25%;
+}

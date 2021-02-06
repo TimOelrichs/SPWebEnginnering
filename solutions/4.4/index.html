@@ -7,25 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
+    <header><h2>Topologische Reihenfolge berechnen</h2>
+    </header>
+    <main>
+    <div id="container" class="container">
         <div id="task"></div>
         <div id="order"></div>
-    </div>
+    
     <div id="newTaskForm">
         <label for="">Neue Aufgabe hinzufügen:</label>
         <input type="text" name="task" id="newtask">
         <input type="button" value="+" onclick="addTask()">
     </div>
-    
+    <div>
+        <div class="inblock w-25">Erst:</div>
+        <div class="inblock w-25">Dann:</div>
+    </div>
     <div id="tasksForm">
-       <div>
-           <p>Aufgabe</p>
-           <p>Abhängikeit</p>
-       </div>
-       </div>
-       <input type="button" value="topologisch sortiern" onclick="sort()">
-    
-<script src="script.js"></script>
+      
+    </div>
+    <input class="w-25" type="button" value="topologisch sortiern" onclick="sort()">
+    <input class="w-25" type="button" value="Reset" onclick="reset()">
 
+</div>
+<h2>Ergebnis:</h2>
+<div class="result" id="result">
+
+</div>
+</main>
+<script src="script.js"></script>
 </body>
 </html>
