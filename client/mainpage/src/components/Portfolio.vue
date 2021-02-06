@@ -23,6 +23,8 @@
 <script>
 import Card from "../components/Card.vue"
 
+import solutionsService from "../services/solutions.service";
+
 export default {
 components: {
     Card,
@@ -35,13 +37,8 @@ components: {
     }
   },
   created: async function () {
-    //this.solutions = await fetch("../solutions_data.json");
-    let data = await fetch(new Request("http://www2.inf.h-bonn-rhein-sieg.de/~toelri2s/backend/solutions/server.php") , {
-method: 'GET',
-mode: 'cors',
-cache: 'no-store'
-});
-    this.solutions = await data.json();
+
+    this.solutions = solutionsService.getAllData();
     this.tags = this.getTags();
     //this.tags.forEach( t => tagsFilter[t] = true); 
 
