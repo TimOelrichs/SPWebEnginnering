@@ -1,29 +1,59 @@
 class SolutionsServive {
 
-    apiUrl = "http://www2.inf.h-bonn-rhein-sieg.de/~toelri2s/backend/solutions/server.php";
+    url = "http://www2.inf.h-bonn-rhein-sieg.de/~toelri2s/backend/solutions/server.php";
+    
+    constructor() {
+        this.url = "http://www2.inf.h-bonn-rhein-sieg.de/~toelri2s/backend/api/solutions/server.php";
+    }
 
-    getAllData() {
-        return await(await fetch(new Request(url), {
+    async getAllData() {
+
+        return await(await fetch(new Request(this.url), {
             method: 'GET',
             mode: 'cors',
             cache: 'no-store'
         })).json();
+  
+   }
+
+    async incView(id) {
+        return await(await fetch(this.url, {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-store',
+            body: { action: "incView", id: id },
+            headers: {'Content-Type': 'application/json'}
+        }));
     }
 
-    incView(id) {
-        return await(await fetch(new Request(url), {
+    async incLike(id){
+        return await(await fetch(new Request(this.url), {
             method: 'GET',
             mode: 'cors',
-            cache: 'no-store'
+            cache: 'no-store',
+            body: JSON.stringify({ action: "incLike", id }),
+            headers:{"Content-Type:": "application/json"}
         })).json();
     }
 
-    incLike(id){
-
+    async decLikes(id) {
+        return await(await fetch(new Request(this.url), {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-store',
+            body: JSON.stringify({ action: "decLike", id }),
+            headers:{"Content-Type:": "application/json"}
+        })).json();
     }
 
-    decLikes(id) {
-        
+    async postComment(commentObj) {
+        return await(await fetch(new Request(this.url), {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-store',
+            body: JSON.stringify({ action: "decLike", id: commentObj.id, comment: commentObj.comment }),
+            headers:{"Content-Type:": "application/json"}
+        })).json();
     }
 
 }

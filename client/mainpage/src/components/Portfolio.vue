@@ -1,20 +1,29 @@
 <template>
 
   <div id="solutions">
-    <div class="filter" id="filter">
-      <input type="text" v-model="searchText" placeholder="Filter nach Titel oder Nr.">
-      <p>{{this.solutionCount}} Lösungen</p>
-      <select @change="sort($event)">
-        <option>Vorlesung: aufsteigend</option>
-        <option>Vorlesung: absteigend</option>
-        <option>Views: aufsteigend</option>
-        <option>Views: absteigend</option>
-        <option>Likes: aufsteigend</option>
-        <option>Likes: absteigend</option>
-      </select>
+    <div class="w-100 flex center fixed z-100">
+      <div class="filter flex" id="filter">
+        <div class="pointer" @click="tilesViewON = !tilesViewON">
+            <i v-if="!tilesViewON" class="material-icons">grid_view</i>
+            <i v-if="tilesViewON" class="material-icons">list</i>
+       </div>
+        <div class="">
+          <input type="text" v-model="searchText" placeholder="Filter nach Titel oder Nr.">
+          <p>{{this.solutionCount}} Lösungen</p>
+        </div>
+
+        <select @change="sort($event)">
+          <option>Vorlesung: aufsteigend</option>
+          <option>Vorlesung: absteigend</option>
+          <option>Views: aufsteigend</option>
+          <option>Views: absteigend</option>
+          <option>Likes: aufsteigend</option>
+          <option>Likes: absteigend</option>
+        </select>
+    </div>
     </div>
     <div id="cards">
-    <Card v-for="solution in filteredSolutions" :key="solution.index" :solution="solution">
+    <Card :style="{ width: tilesView }" v-for="solution in filteredSolutions" :key="solution.index" :solution="solution">
       </Card>
       </div>
   </div>
@@ -34,32 +43,41 @@ components: {
       solutions: [],
       searchText: "",
       tags: [],
+      tilesViewON: false,
     }
   },
   created: async function () {
 
-    this.solutions = solutionsService.getAllData();
+    this.solutions = await solutionsService.getAllData();
     this.tags = this.getTags();
     //this.tags.forEach( t => tagsFilter[t] = true); 
 
 },
 mounted(){
   window.bus.$on('addComment', commentObj => {
-    
+  
     this.solutions.filter( s => s.id == commentObj.id)[0].comments.push(commentObj.comment);
     console.log(this.solutions.filter( s => s.id == commentObj.id)[0].comments)
+    solutionsService.postComment(commentObj)
+      .then(res => res.json())
+      .then(res => console.log("postComment", res));
   })
 
   window.bus.$on('incView', id => {
       this.solutions.filter( s => s.id == id)[0].view++;
+      solutionsService.incView(id)
+      .then(res => res.text())
+      .then(res => console.log("incView", res));
   })
 
   window.bus.$on('solution-liked', id => {
       this.solutions.filter( s => s.id == id)[0].likes++;
+      solutionsService.incLike(id).then(res => console.log("incLike", res));
   })
 
    window.bus.$on('solution-disliked', id => {
       this.solutions.filter( s => s.id == id)[0].likes--;
+      solutionsService.decLike(id).then(res => console.log("decLike", res));
   })
 
 },
@@ -133,9 +151,7 @@ computed:{
     return this.filteredSolutions.length;
   },
   tilesView: function (){
-    return this.tilesViewON ? {
-
-    } : "";
+    return this.tilesViewON ? "40%": "100%";
   }
 
 },
@@ -148,7 +164,7 @@ computed:{
 <style>
 #solutions{
   margin: 0px;
-  margin-top: 50px;
+  margin-top: 100px;
   display: flex;
   justify-content: center;
   align-content: flex-start;
@@ -158,17 +174,47 @@ computed:{
    
 }
 
-.filter{
+.flex{
   display: flex;
-  position: fixed;
-  top: 60px;
-  widows: 100%;
+ 
+}
+.block{
+  display: block;
+}
+
+.fixed{
+    position: fixed;
+    top: 60px;
+}
+
+.w-100{
+  width: 100%;
+}
+
+.z-100{
+  z-index: 100;
+}
+
+.center{
+   justify-content: center;
+}
+
+.viewbtn{
+  cursor: pointer;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+
+.filter{
+  justify-content: space-between;
+  width: 70%;
   background-color:#020c1b;
   z-index: 100;
 }
-.filter select{
-  margin-left: auto;
-}
+
 
 
 input, select{
