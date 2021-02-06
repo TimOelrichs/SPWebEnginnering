@@ -1,7 +1,11 @@
 <template>
    <div class="comment">
-       <div class="head"></div>
-              <div>{{comment.user}}: {{comment.comment}}</div>
+       <div class="flex">
+            <h4 class="green">{{comment.user + ": "}}</h4> <h4> {{comment.comment}}</h4>
+       </div>
+        <div class="timestamp">
+            <p>{{comment.timestamp}}</p>
+        </div>
     </div>
 </template>
 

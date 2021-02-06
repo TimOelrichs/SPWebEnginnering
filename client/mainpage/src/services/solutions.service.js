@@ -21,8 +21,8 @@ class SolutionsServive {
             method: 'POST',
             mode: 'cors',
             cache: 'no-store',
-            body: { action: "incView", id: id },
-            headers: {'Content-Type': 'application/json'}
+            body: JSON.stringify({ action: "incView", id: id }),
+            headers: JSON.stringify({'Content-Type': 'application/json'})
         }));
     }
 

@@ -32,20 +32,19 @@
             <i  v-if="!showComments" class="material-icons">keyboard_arrow_down</i>
             <i  v-if="showComments" class="material-icons">keyboard_arrow_up</i>
             <div> {{solution.comments.length}} Kommentare</div>
-            <div>
-              
-            </div>
         </div>
       <div v-if="showComments" class="comments">
         <Comment v-for="comment in solution.comments" :key="comment.comment" :comment="comment">
-
         </Comment>
-        <div class="commentform">
-          <label for="user">Name:</label>
-          <input type="text" v-model="commentUser" name="user">
-          <div>
-          <input type="text" v-model="commentText">
-          <button @click="postComment(solution.id)">Senden</button>
+        <div class="commentform flex wrap">
+          <div class="flex">
+            <label class="block" for="user">Name:</label>
+            <input type="text" v-model="commentUser" name="user">
+          </div>
+          <div class="flex">
+            <label class="block" for="comment">Kommentar:</label>
+            <input type="text" v-model="commentText" name="comment">
+            <button @click="postComment(solution.id)">Senden</button>
           </div>
         </div>
       </div>
@@ -80,7 +79,7 @@ import Comment from './Comment.vue';
       postComment: function (id) {
         console.log(id);
 
-        window.bus.$emit('addComment', { id , comment : { user: this.commentUser, comment: this.commentText, timestamp : new Date().toISOString() }})
+        window.bus.$emit('addComment', { id , comment : { user: this.commentUser, comment: this.commentText, timestamp : new Date().toUTCString() }})
         this.commentText = "";
       },
       incViews: function(id){
@@ -103,6 +102,7 @@ import Comment from './Comment.vue';
     /* card design from https://codepen.io/sdthornton/pen/wBZdXq */
     position: relative;
     display: block;
+    align-self:flex-start;
     text-align: left;
     background-color: #0a192f;
     border-radius: 5px;
@@ -114,6 +114,15 @@ import Comment from './Comment.vue';
   }
   .card:hover {
     top: -3px;
+  }
+
+  .wrap{
+    flex-wrap: wrap;
+  }
+
+  .block{
+    display: block;
+    width: 100px;
   }
 
   .likes{
@@ -139,7 +148,7 @@ import Comment from './Comment.vue';
     position: relative;
     justify-content: flex-start;
     align-content: space-around;
-    height: 15%;
+    height: 30px;
     width: 100%;
     bottom: 0px;
     margin-top: 15px;
@@ -153,6 +162,11 @@ import Comment from './Comment.vue';
   .commentform{
     display: flex;
     padding: 5px;
+    border-top: 1px solid #233554;
+  }
+  .commentform input[type=text]{
+    height: 15px;
+    margin-right: 20px;
   }
 
   .commentsHeader{

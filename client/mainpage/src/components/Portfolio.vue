@@ -7,7 +7,7 @@
             <i v-if="!tilesViewON" class="material-icons">grid_view</i>
             <i v-if="tilesViewON" class="material-icons">list</i>
        </div>
-        <div class="">
+        <div>
           <input type="text" v-model="searchText" placeholder="Filter nach Titel oder Nr.">
           <p>{{this.solutionCount}} Lösungen</p>
         </div>
@@ -113,7 +113,7 @@ methods:{
         break;
           case "Views: aufsteigend":
         this.solutions = this.solutions.sort((a, b) => {
-          return b.view-a.view;
+          return a.view-b.view;
         });
         break;
           case "Views: absteigend":
@@ -184,7 +184,7 @@ computed:{
 
 .fixed{
     position: fixed;
-    top: 60px;
+    top: 50px;
 }
 
 .w-100{
@@ -209,10 +209,12 @@ computed:{
 
 
 .filter{
+  margin-top: 0px;
   justify-content: space-between;
-  width: 70%;
+  width: 80%;
   background-color:#020c1b;
   z-index: 100;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); /* https://codepen.io/sdthornton/pen/wBZdXq */ 
 }
 
 
