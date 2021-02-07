@@ -4,63 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performace Test</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        table {
-            border: solid black 1px;
-        }
+     
     </style>
 </head>
 
 <body>
+    <header>
+        <h1>Performance-Messung</h1>
+    </header>
+ <div class="container">  
+    <div class="form">
+        <label for="messungen">Anzahl Messwiederholungen:</label>
+        <input type="number" name="messungen" id="txt_number" value="1">
+        <br>
+        <label for="vorlauf">Warmstart nach Vorlaufmessungen:</label>
+        <input type="number" name="vorlauf" id="txt_vorlauf" value="0">
+        <br>
+        <input onclick="start()" type="button" value="Messungen starten">
+    </div> 
+    <div id="msg"></div>
     
-<table id="results">
-    <tr>
-        <th>Platz:</th>
-        <th>
-            Dom Operation:
-        </th>
-        <th>
-            Zeit:
-        </th>
-    </tr>
-    <div id="test">
-    </div>
+    <table id="results">
+    </table>
 
-</table>
-<script>
-window.onload = () => {
-
-let ops = ["innerHTML", "innerText", "textContent", "outerHTML"]
-let tableObj = {}
-let elem = document.getElementById("test");
-let table = document.getElementById("results")
-
-ops.forEach((op) => {
-    let t0 = performance.now();
-    elem[op] = op;
-    let t1 = performance.now()
-    tableObj[op] = t1-t0;
-})
-
-// sort result
-Object.entries(tableObj).sort(([,a],[,b]) => a-b).forEach( (item, index) => {
-    let tr = document.createElement("tr");
-    let td = document.createElement("td")
-    td.textContent = index+1;
-    tr.appendChild(td);
-    td = document.createElement("td")
-    td.textContent = item[0];
-    tr.appendChild(td);
-    td = document.createElement("td")
-    td.textContent = item[1];
-    tr.appendChild(td)
-    table.appendChild(tr)
-})
-
-console.log(tableObj)
-}
-
-</script>
-
+    <div></div><div id="test-container"><div id="test"></div></div></div>
+</div>
+<script src="messen.js"></script>
 </body>
 </html>
