@@ -1,16 +1,15 @@
 
 window.onload = resetTable;
 
-const testText = "Testing ...."
+const testText = "<div>Testing ....</div>"
 
 const testContainer = document.getElementById("test-container");
 var testElem = document.getElementById("test");
 const table = document.getElementById("results")
-const msg = document.getElementById('msg');
+
 
 
 function resetTable() {  
-    msg.textContent = "";
     table.innerHTML = `
     <tr>
         <th>Platz:</th>
@@ -24,11 +23,8 @@ function resetTable() {
 }
 
 function start(){
-    msg.textContent = "berechne..."
     resetTable();
     messen();
-    msg.textContent = "fertig!"
-
 }
 
 function resetTestElem(){
