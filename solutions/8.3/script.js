@@ -3,7 +3,7 @@ let json;
 
 
 async function getData(){
-    let data = await fetch("./data.json")
+    let data = await fetch("../common/data/data.json")
     return await data.json();
 }
 
