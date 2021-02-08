@@ -3,7 +3,6 @@ $file = '../common/data/users.csv';
 require "salter.php";
 
 
-
 function userExists($data)
 {
     global $file;

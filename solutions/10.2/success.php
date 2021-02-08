@@ -25,7 +25,6 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
         <main><?php
                 echo "<h1>Hallo," . ucwords($_SESSION['user']) . "!</h1>";
                 echo "<h2>Du bist nun eingeloggt.</h2>";
-
                 ?>
         </main>
         <style>
