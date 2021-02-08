@@ -17,7 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION["login"]) && $_SESSI
     switch ($postJson->action) {
         case "publish":
             if (publishData($postJson->data)) {
-                die("success");
+                savePreviewData("");
+                die('{"status": "success"}');
+            }
+            break;
+        case "savePreviewData":
+            if (savePreviewData($postJson->data)) {
+                die('{"status": "success"}');
             }
             break;
     }

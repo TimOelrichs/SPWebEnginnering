@@ -23,13 +23,15 @@ include "../common/util/content.php"
             <header>
                 <div class="headline">
                     <h1> <a href="./navigator.php">PHP WWW-Navigator</a></h1>
-
+                    <div>
+                        <h2>Vorschau</h2>
+                    </div>
                     <div>
                         <?php if (isset($_SESSION["login"]) && $_SESSION["login"] == 1) {
                             echo '<a class="editFab" href="./editor.php"><i class="material-icons">edit</i></a>';
                             echo '<a class="btn" href="./logout.php">logout</a>';
                         } else {
-                            echo '<a class="btn" href="./login.php">login</a>';
+                            header("Location: login.php");
                         }
 
                         ?>
@@ -67,7 +69,7 @@ include "../common/util/content.php"
 
         <script>
             async function getData() {
-                let json = <?PHP echo json_encode(getAllData(), true);
+                let json = <?PHP echo json_encode(getPreviewData(), true);
 
                             ?>;
                 return json;

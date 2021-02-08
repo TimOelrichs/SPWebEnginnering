@@ -1,6 +1,6 @@
 <?PHP
 $file = dirname(__FILE__) . '/../data/data.json';
-$preViewfile = dirname(__FILE__) . '/data/preview.json';
+$preViewfile = dirname(__FILE__) . '/../data/preview.json';
 
 function getAllData()
 {

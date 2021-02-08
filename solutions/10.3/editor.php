@@ -15,10 +15,23 @@ require "../common/util/content.php";
 <style>
     * {
         margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body,
+    html {
+        width: 100%;
+        height: 100%
+    }
+
+    body {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
     }
 
     #form {
         width: 80vw;
+        justify-self: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -30,43 +43,83 @@ require "../common/util/content.php";
         margin: 0 0 5px;
         display: block;
         width: 80vw;
-        height: 20vh;
+        height: 100px;
         padding: 20px;
     }
 
+
+    select,
     input {
         height: 20px;
-
-    }
-
-    select {
-        height: 20px;
         width: 150px;
+        padding: 0px 15px;
     }
 
     label {
         display: inline-block;
         padding: 5px;
-        width: 150px;
+        width: 200px;
     }
 
     header {
+
+        background-color: #333;
+        color: white;
         margin: 0;
-        padding: 5px;
-        height: 40px;
+        padding: 5px 30px;
+        height: auto;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+
+    header a {
+        text-decoration: none;
+        color: white;
+
     }
 
     #textareaHeader {
         display: flex;
         justify-content: space-between;
     }
+
+    p {
+        margin-top: 15px;
+    }
+
+    #msg {
+
+        color: blueviolet;
+    }
+
+    #vergleichView {
+        display: none;
+        flex-direction: column;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .flex textarea {
+        width: 45vw;
+        height: 65vh;
+    }
 </style>
 <header>
-    <h1>Content Editor</h1>
+    <h1> <a href="./navigator.php">PHP WWW-Navigator</a></h1>
+    <h3>Content Editor</h3>
 </header>
 <div id="form">
-    <legend>Kategorie auswählen oder hinzufügen:</legend>
+
+    <div id="">
+        <h4 id="datasource">Geöffnet: Serverdaten</h4>
+        <button disabled="true" id="toogleDataBtn" onclick="toogleDataSource()">Wechseln zu lokaler Kopie</button>
+        <button onclick="toogleVergleichView()" id="vergleichenBtn">Daten vergleichen</button>
+        <button onclick="deleteLocal()" disabled="true" id="deleteLocalCopyBtn">Lokale Kopie löschen</button>
+        <button onclick="toogleSaveLocal()" id="toogleSaveLocalBtn">Lokale Kopie deaktivieren</button>
+        <button onclick="preview()"><i class="material-icons">preview</i>Vorschau</button>
+    </div>
+    <p>Kategorie auswählen oder hinzufügen:</p>
     <div>
         <select name="top_header">
         </select>
@@ -84,38 +137,115 @@ require "../common/util/content.php";
     </div>
     <div id="textareaHeader">
         <p>Content hinzufügen:</p>
-        <button onclick="preview()"><i class="material-icons">preview</i>Vorschau</button>
+        <p id="msg">
+        <p>
+        <p></p>
     </div>
-    <textarea id="content"></textarea>
+    <textarea id="content" oninput="saveLocal()"></textarea>
     <div>
         <p>Referenzen hinzufügen:</p>
     </div>
-    <textarea id="references" onchange="saveLocal()"></textarea>
+    <textarea id="references" oninput="saveLocal()"></textarea>
     <div>
-        <button onclick="saveLocal()">Lokal speichern</button>
-        <button onclick="publish()">Veröffentlichen</button>
+
+        <button id="publishBtn" disabled="true" onclick="publish()">Veröffentlichen</button>
     </div>
 
 </div>
-<div id="preview">
-</div>
 
+<div id="vergleichView">
+    <button onclick="toogleVergleichView()" id="vergleichenBtn">Zum Editor wechseln</button>
+    <div class="flex">
+        <div>
+            <h1>Server Daten:</h1>
+            <textarea class="jsonTextarea"></textarea>
+        </div>
+        <div>
+            <h1>Lokale Kopie:</h1>
+            <textarea class="jsonTextarea"></textarea>
+        </div>
+
+    </div>
+</div>
 <?PHP
 $json = getAllData();
 ?>
 
 <script>
-    let json = <?PHP echo json_encode($json) ?>;
+    var json = <?PHP echo json_encode($json) ?>;
+    const form = document.getElementById('form');
     const top_header = document.querySelector('select[name="top_header"]');
     const sub_header = document.querySelector('select[name="sub_header"]');
     const txt_NewHeader = document.getElementById("newHeader");
     const txt_NewSubHeader = document.getElementById("newSubHeader");
     const content = document.getElementById("content");
     const references = document.getElementById("references");
+    const msg = document.getElementById('msg');
+    const datasource = document.getElementById('datasource');
+    const toogleDataBtn = document.getElementById('toogleDataBtn');
+    const vergleichenBtn = document.getElementById('vergleichenBtn');
+    const deleteLocalCopyBtn = document.getElementById('deleteLocalCopyBtn');
+    const toogleSaveLocalBtn = document.getElementById('toogleSaveLocalBtn');
+    const publishBtn = document.getElementById('publishBtn');
+    const vergleichView = document.getElementById('vergleichView');
+
+    let isLocalData = false;
+    let isSaveLocalActive = true;
+    let timeout = 0;
+    let localJson;
+    let needsRefresh = false;
 
     init();
 
     function init() {
+        let local = localStorage.getItem('content');
+        if (local) {
+            loadLocal();
+        };
+        update();
+    }
+
+    function loadLocal() {
+        json = JSON.parse(localStorage.getItem('content'))
+        toogleDataSource();
+    }
+
+    function deleteLocal() {
+        localStorage.removeItem('content');
+        localJson = null;
+        isLocalData = false;
+        setDataSource();
+        toogleDataBtn.disabled = true;
+        deleteLocalCopyBtn.disabled = true;
+
+        init();
+
+    }
+
+    function toogleSaveLocal() {
+        isSaveLocalActive = !isSaveLocalActive;
+        toogleSaveLocalBtn.innerText = isSaveLocalActive ? "Lokale Kopie deaktieren" : "Lokale Kopie aktivieren";
+
+    }
+
+
+    async function toogleVergleichView() {
+        let display = form.style.display;
+        if (display != "none") {
+            form.style.display = "none";
+            vergleichView.style.display = "flex";
+            let textareas = document.querySelectorAll('.flex textarea');
+            textareas[0].value = JSON.stringify(await fetchDataFromServer(), null, 2);
+            textareas[1].value = JSON.stringify(JSON.parse(localStorage.getItem('content')), null, 2);
+        } else {
+            form.style.display = "flex";
+            vergleichView.style.display = "none";
+        }
+
+    }
+
+    function update() {
+        top_header.innerHTML = "";
         Object.keys(json).forEach(key => {
             const option = document.createElement('option');
             option.value = key;
@@ -126,41 +256,95 @@ $json = getAllData();
         updateSubheaders(top_header.value);
 
         top_header.addEventListener('change', e => {
-            console.log("old:", e.oldValue)
             updateSubheaders(e.target.value);
             updateTextAreas();
 
         });
         sub_header.addEventListener('change', e => {
-            console.log("old:", e.oldValue)
             updateTextAreas();
         });
 
 
     }
 
-    function saveLocal() {
-        console.log("saveLocal")
-        json[top_header.value][sub_header.value].content = content.value;
-        json[top_header.value][sub_header.value].references = references.value.replaceAll("\n", "").split(",");
-        localStorage.setItem("content", JSON.stringify(json));
+    async function setDataSource() {
+        if (isLocalData) {
+            if (localJson) {
+                json = localJson;
+                localJson = null;
+            };
+            datasource.innerText = "Geöffnet: Lokale Kopie";
+            toogleDataBtn.disabled = false;
+            toogleDataBtn.innerText = "Wechsel zu Serverdaten";
+            if (!isSaveLocalActive) toogleSaveLocal();
+            deleteLocalCopyBtn.disabled = false;
+            if (needsRefresh) update();
+            needsRefresh = false;
+        } else {
+            localJson = json;
+            json = await fetchDataFromServer();
+            datasource.innerText = "Geöffnet: Server Daten";
+            toogleDataBtn.innerText = "Wechsel zu lokaler Kopie";
+            if (isSaveLocalActive) toogleSaveLocal();
+            update();
+            needsRefresh = true;
+        };
     }
 
-    function publish() {
-        console.log(json);
-        fetch(new Request("../common/server/server.php"), {
-            method: 'POST',
+    async function fetchDataFromServer() {
+        return await (await fetch(new Request("../common/server/server.php"), {
+            method: 'GET',
             mode: 'cors',
-            cache: 'no-store',
-            body: JSON.stringify({
-                action: "publish",
-                data: json
-            }),
-        }, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.text()).then(res => console.log(res));
+            cache: 'no-store'
+        })).json();
+    }
+
+    function toogleDataSource() {
+        isLocalData = !isLocalData;
+        setDataSource();
+        publishBtn.disabled = !publishBtn.disabled;
+    }
+
+    function saveLocal() {
+
+        if (!isSaveLocalActive) return;
+        if (!isLocalData) toogleDataSource();
+        clearTimeout(timeout);
+        json[top_header.value][sub_header.value].content = content.value;
+        json[top_header.value][sub_header.value].references = references.value.replaceAll("\n", "").split(",");
+        publishBtn.disabled = false;
+        msg.innerText = "...";
+        timeout = setTimeout(() => {
+            msg.innerText = "Lokal gespeichert";
+            localStorage.setItem("content", JSON.stringify(json));
+            setTimeout(() => {
+                msg.innerText = "";
+            }, 1000);
+        }, 1000);
+    }
+
+
+    function publish() {
+
+        fetch(new Request("../common/server/server.php"), {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-store',
+                body: JSON.stringify({
+                    action: "publish",
+                    data: json
+                }),
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+            .then(res => {
+                if (res.status == 'success') {
+                    msg.innerHTML = '<a href="./navigator.php">Content veröffentlich!</a>'
+                    localStorage.removeItem("content");
+                }
+            })
 
     }
 
@@ -171,6 +355,7 @@ $json = getAllData();
             top_header.removeChild(document.querySelector('option[value=' + top_header.value + ']'));
             updateSubheaders(top_header.value);
         }
+        saveLocal()
     }
 
     function deleteSubHeader() {
@@ -180,26 +365,31 @@ $json = getAllData();
             sub_header.removeChild(document.querySelector('option[value=' + sub_header.value + ']'));
             updateTextAreas();
         }
+        saveLocal();
     }
 
     function preview() {
-        fetch(new Request("./navigator.php"), {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-store',
-            body: JSON.stringify(json),
-        }, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(async res => {
-            let html = await res.text();
-            console.log(html)
-            document.documentElement.innerHTML = html;
-            history.pushState({
-                url: "/navigator.php"
-            }, "Preview", "navigator.php");
-        });
+        console.log(json);
+        fetch(new Request("../common/server/server.php"), {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-store',
+                body: JSON.stringify({
+                    action: "savePreviewData",
+                    data: json
+                }),
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+            .then(res => {
+                if (res.status == 'success') {
+                    window.location.href = "./preview.php";
+                }
+            })
+            .catch(err => msg.innerText = "PreviewDaten konnten nicht auf dem Server gespeichert werden.")
+
     }
 
     function updateSubheaders(header) {
@@ -258,15 +448,3 @@ $json = getAllData();
         updateTextAreas();
     }
 </script>
-<?PHP
-
-if (isset($_POST['top_header']) && isset($_POST['sub_header']) && isset($_POST['content'])) {
-    $top_header = $_POST['top_header'];
-    $sub_header = $_POST['sub_header'];
-    $content = $_POST['content'];
-    $json[$top_header][$sub_header] = $content;
-    if (file_put_contents($file, json_encode($json, true))) {
-        echo "<script>alert('Content is entered successfully!')</script>";
-    }
-}
-?>

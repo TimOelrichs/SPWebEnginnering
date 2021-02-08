@@ -31,10 +31,13 @@ aside {
 
 .headline a {
   text-decoration: none;
+  color: white;
+}
+
+.headline a.btn {
   display: inline-block;
   border-radius: 5px;
   background-color: lightslategray;
-  color: white;
   padding: 5px 30px;
 }
 
@@ -81,6 +84,7 @@ aside a:hover {
 
 header nav {
   margin-top: 15px;
+  padding-bottom: 5px;
   text-align: center;
 }
 header nav ul {
@@ -119,10 +123,11 @@ article {
 
 a.editFab {
   position: fixed;
-  padding: 13px;
+  padding: 11px;
   bottom: 75px;
   right: 30px;
   border-radius: 50%;
+  border: 2px solid #333;
   width: 50px;
   height: 50px;
   background-color: #64ffda;
@@ -131,6 +136,14 @@ a.editFab {
 a.editFab:hover {
   background-color: #333;
   color: white;
+}
+
+footer a:hover {
+  font-weight: bold;
+}
+
+#msg {
+  color: lightgreen;
 }
 
 @media screen and (min-width: 600px) {
