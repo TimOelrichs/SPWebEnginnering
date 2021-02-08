@@ -63,7 +63,7 @@ function showContent(event, subCat, key) {
     content.innerHTML = json[subCat][key].content;
     let right = document.getElementById('rightnav');
     console.log(json[subCat][key].references.map( r => `<a href="${r}>${r}</a>`).join())
-    right.innerHTML = json[subCat][key].references.map( r => `<a href="${r}">${r.split("/").pop()}</a>`).join();
+    right.innerHTML = json[subCat][key].references.map( r => `<a href="${r}">${r.split("/").pop()}</a>`).join("");
 }
 
 function menuItemClickHandler(event, subCat) {

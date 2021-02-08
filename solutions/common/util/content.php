@@ -1,24 +1,31 @@
 <?PHP
-
-session_start();
-
-$file = '../data/data.json';
+$file = dirname(__FILE__) . '/../data/data.json';
+$preViewfile = dirname(__FILE__) . '/data/preview.json';
 
 function getAllData()
 {
-    $file = '../data/data.json';
+    global $file;
     $contents = file_get_contents($file);
-    $json = json_decode($contents, false, 512, JSON_UNESCAPED_UNICODE);
+    $json = json_decode($contents, false);
     return $json;
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    die(getAllData());
+function getPreviewData()
+{
+    global $preViewfile;
+    $contents = file_get_contents($preViewfile);
+    $json = json_decode($contents, false);
+    return $json;
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION["login"]) && $_SESSION["login"] == 1) {
-    $raw_data = file_get_contents('php://input');
-    if (file_put_contents($file, json_encode($raw_data, JSON_UNESCAPED_UNICODE), LOCK_EX)) {
-        die("success");
-    }
-};
+function publishData($data)
+{
+    global $file;
+    return file_put_contents($file, json_encode($data, JSON_UNESCAPED_UNICODE), LOCK_EX);
+}
+
+function savePreviewData($data)
+{
+    global $preViewfile;
+    return file_put_contents($preViewfile, json_encode($data, JSON_UNESCAPED_UNICODE), LOCK_EX);
+}

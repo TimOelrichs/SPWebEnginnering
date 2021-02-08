@@ -1,11 +1,12 @@
 <?php
 session_start();
+
 if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
-    header("Location: login.php");
+    header("Location: navigator.php");
     exit;
 }
 
-include "./helpers/content.php"
+require "../common/util/content.php";
 
 ?>
 
@@ -89,7 +90,7 @@ include "./helpers/content.php"
     <div>
         <p>Referenzen hinzufügen:</p>
     </div>
-    <textarea id="references"></textarea>
+    <textarea id="references" onchange="saveLocal()"></textarea>
     <div>
         <button onclick="saveLocal()">Lokal speichern</button>
         <button onclick="publish()">Veröffentlichen</button>
@@ -141,23 +142,25 @@ $json = getAllData();
     function saveLocal() {
         console.log("saveLocal")
         json[top_header.value][sub_header.value].content = content.value;
-        json[top_header.value][sub_header.value].references = references.value;
+        json[top_header.value][sub_header.value].references = references.value.replaceAll("\n", "").split(",");
         localStorage.setItem("content", JSON.stringify(json));
     }
 
     function publish() {
-        console.log("Submit");
         console.log(json);
-        fetch(new Request("./helpers/content.php"), {
+        fetch(new Request("../common/server/server.php"), {
             method: 'POST',
             mode: 'cors',
             cache: 'no-store',
-            body: JSON.stringify(json),
+            body: JSON.stringify({
+                action: "publish",
+                data: json
+            }),
         }, {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(res => alert(res));
+        }).then(res => res.text()).then(res => console.log(res));
 
     }
 
@@ -167,8 +170,6 @@ $json = getAllData();
             delete json[top_header.value];
             top_header.removeChild(document.querySelector('option[value=' + top_header.value + ']'));
             updateSubheaders(top_header.value);
-
-
         }
     }
 
@@ -182,7 +183,6 @@ $json = getAllData();
     }
 
     function preview() {
-        console.log("preview")
         fetch(new Request("./navigator.php"), {
             method: 'POST',
             mode: 'cors',
@@ -221,7 +221,7 @@ $json = getAllData();
             content.value = "";
         }
         if (json?. [top_header.value]?. [sub_header.value]?.references) {
-            references.value = json[top_header.value][sub_header.value].references;
+            references.value = json[top_header.value][sub_header.value].references.join(",\n");
         } else {
             references.value = "";
         }

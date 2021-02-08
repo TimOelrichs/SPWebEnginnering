@@ -38,13 +38,14 @@ function getData()
     <body>
         <div id="site">
             <header>
-                <div>
-                    <h1>WWW-Navigator</h1>
+                <div class="headline">
+                    <h1>PHP WWW-Navigator</h1>
                     <div>
-                        <?php if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
-                            echo '<a href="./login.php">login</a>';
-                        } else {
+                        <?php if (isset($_SESSION["login"]) && $_SESSION["login"] == 1) {
+                            echo '<a class="editFab" href="./editor.php"><i class="material-icons">edit</i></a>';
                             echo '<a href="./logout.php">logout</a>';
+                        } else {
+                            echo '<a href="./login.php">login</a>';
                         }
 
                         ?>
@@ -145,7 +146,7 @@ function getData()
                 let content = document.getElementById('content');
                 content.innerHTML = json[subCat][key].content;
                 let right = document.getElementById('rightnav');
-                console.log(json[subCat][key].references.map(r => `<a href="${r}>${r}</a>`).join())
+                console.log(json[subCat][key].references.map(r => `<a href="${r}>${r}</a>`).join(""))
                 right.innerHTML = json[subCat][key].references.map(r => `<a href="${r}">${r.split("/").pop()}</a>`).join();
             }
 
