@@ -6,8 +6,8 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['passw
     $passwd = $_POST['password'];
     $repeated_passwd = $_POST['passwordRepeat'];
 
-    $file = './data/users.csv';
-    include "./helpers/users.php";
+    $file = '../common/data/users.csv';
+    include "../common/util/users.php";
     echo "<script> var errors = {};</script>";
     if (!userExists($_POST)) {
         if ($passwd == $repeated_passwd) {
@@ -17,7 +17,7 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['passw
             if (file_put_contents($file, $new_line, FILE_APPEND | LOCK_EX)) {
                 $_SESSION["login"] = 1;
                 $_SESSION["user"] = $_POST['account'];
-                header("Location: navigator.php");
+                header("Location: success.php");
                 exit;
             }
         } else {
@@ -26,7 +26,6 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['passw
     } else {
         echo "<script> errors['user'] = 'Benutzername ist bereits vergeben'</script>";
     }
-    echo "<script> if(errors){showErrors()}'</script>";
 }
 ?>
 
@@ -57,7 +56,6 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['passw
             <div id="errors"></div>
             <input type="submit" value="Submit">
         </fieldset>
-        <a href="login.php">einloggen</a>
     </form>
     <script>
         window.onload = showErrors();
