@@ -4,90 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        * {
-  margin: 0;
-
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-#mainnav {
-  display: flex;
-  list-style: none;
-  justify-content: space-between;
-  min-width: 200px;
-}
-
-#leftnav {
-  list-style: none;
-}
-
-aside {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  width: 150px;
-  background-color: grey;
-}
-
-#content {
-  padding: 20px;
-  width: 60vw;
-  height: 70vh;
-}
-
-main {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-header {
-  height: 10vh;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #333;
-  color: white;
-  padding: 10px;
-}
-
-footer {
-  height: 10vh;
-  padding: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: #333;
-  color: white;
-  padding: 10px;
-}
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="site">
     <header>
         <h1>WWW-Navigator</h1>
         <nav>
             <ul id="mainnav"></ul>
         </nav> 
-    </header>
-   
-    <main>
-    <aside id="left">
+    </header> 
+    <aside id=left>
+        <h4>Themen:</h4>
         <nav >
             <ul id="leftnav"></ul>
         </nav> 
     </aside>
-    <section id="content">
+    <article id="content">
 
-    </section>
+    </article>
     <aside id="right">
-        
+        <h4>Referenzen:</h4>
+        <nav>
+            <ul id="rightnav"></ul>
+        </nav> 
     </aside>
-</main>
+
     <footer>
         <h1>Footer:</h1>
         <a>Sitemap</a>
@@ -95,67 +37,7 @@ footer {
         <a>News</a>
         <a>Contact</a>
     </footer>
-    <script>
-        
-let json; 
-
-
-async function getData(){
-    let data = await fetch("./data.json")
-    return await data.json();
-}
-
-
-async function init() {
-    try {
-        json = await getData();
-        console.log(json)
-        createMainMenu();
-    } catch (error) {
-        console.log(error)
-    }
- 
-}
-
-init();
-
-function createMainMenu() {
-    let nav = document.getElementById('mainnav');
-    let i = 0
-    for (const key of Object.keys(json)) {
-        const li = document.createElement('li');
-        li.textContent = key;
-        li.addEventListener('click', () => menuItemClickHandler(key));
-        nav.appendChild(li)
-        if(!i++)createSideMenu(key)
-    }
-}
-
-function createSideMenu(subCat) {
-    let nav = document.getElementById('leftnav');
-    nav.innerHTML = "";
-    let i = 0;
-    for (const key of Object.keys(json[subCat])) {
-        const li = document.createElement('li');
-        li.textContent = key;
-        li.addEventListener('click', () => showContent(subCat, key ));
-        nav.appendChild(li);
-        if (!i++) showContent(subCat, key);
-    }
-}
-
-function showContent(subCat, key ) {
-    let content = document.getElementById('content');
-    content.innerHTML = json[subCat][key].content;
-    let right = document.getElementById('right');
-    console.log(json[subCat][key].references.map( r => `<a href="${r}>${r}</a>`).join())
-    right.innerHTML = json[subCat][key].references.map( r => `<a href="${r}">${r.split("/").pop()}</a>`).join();
-}
-
-function menuItemClickHandler(subCat) {
-    createSideMenu(subCat)
-}
-
-    </script>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

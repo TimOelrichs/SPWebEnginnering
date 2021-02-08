@@ -46,7 +46,6 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['passw
         </div>
         <form method="post">
             <fieldset>
-
                 <div>
                     Benutzername:</div>
                 <input type="text" name="account">
