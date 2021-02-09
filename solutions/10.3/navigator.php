@@ -24,8 +24,9 @@ include "../common/util/content.php"
                 <div class="headline">
                     <h1> <a href="./navigator.php">PHP WWW-Navigator</a></h1>
                     <div>
-                        <?php
-                        echo "Willkommen," . ucwords($_SESSION['user']) . "!";
+                        <?php if (isset($_SESSION["user"])) {
+                            echo "Willkommen," . ucwords($_SESSION['user']) . "!";
+                        }
                         ?>
                     </div>
                     <div>
