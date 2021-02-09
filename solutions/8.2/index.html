@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>8.2 JS async / await</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="container"></div>
+    <header><h1>Fetch and concat result:</h1> (with async / await)</header>
+
+    <div class="container">
+    <input type="url" name="a" id="inpA" value="./A.txt">
+    <input type="url" name="b" id="inpB" value="./B.txt">
+    <input type="button" value="fetch and concat" onclick="getAndConcatText()">
+   </div>
+   <div>
+       <h4>A:</h4>
+       <div id="txta">
+
+       </div>
+       <h4>B:</h4>
+       <div id="txtb">
+           
+    </div>
+   </div>
+
+<div class="container" id="container"></div>
     
-<script>
-    let a = fetch("./A.txt").then(x => x.text());
-    let b = fetch("./B.txt").then(x => x.text());
-
-    let div = document.getElementById('container')
-
-    Promise.all([a, b])
-        .then(([a, b]) => [a.split('\n'), b.split('\n')])
-        .then(([a, b]) => a.length >= b.length ? a.map((e, i) => e + (b[i] || "")) : b.map((e, i) => (a[i] || "") + e))
-        .then(a => a.join("<br>"))
-        .then(a => div.innerHTML = a )
-
-</script>
+<script src="8.2.js"></script>
 </body>
 </html>
