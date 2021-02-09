@@ -23,7 +23,11 @@ include "../common/util/content.php"
             <header>
                 <div class="headline">
                     <h1> <a href="./navigator.php">PHP WWW-Navigator</a></h1>
-
+                    <div>
+                        <?php
+                        echo "Willkommen," . ucwords($_SESSION['user']) . "!";
+                        ?>
+                    </div>
                     <div>
                         <?php if (isset($_SESSION["login"]) && $_SESSION["login"] == 1) {
                             echo '<a class="editFab" href="./editor.php"><i class="material-icons">edit</i></a>';
