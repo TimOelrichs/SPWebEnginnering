@@ -1,8 +1,0 @@
-PHP Navigator CSS 
-- login
-- register
-- editor
-- Main grif
-PHP Navigagor Funktionalität
-- Speichern als JSON
-

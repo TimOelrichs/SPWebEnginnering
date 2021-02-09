@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/~toelri2s/SPWebEnginnering/client/mainpage/dist'
+  publicPath: '/~toelri2s/client/mainpage/'
 }

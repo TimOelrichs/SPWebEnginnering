@@ -19,6 +19,8 @@
           <option>Views: absteigend</option>
           <option>Likes: aufsteigend</option>
           <option>Likes: absteigend</option>
+          <option>Kommentare: aufsteigend</option>
+          <option>Kommentare: absteigend</option>
         </select>
     </div>
     </div>
@@ -50,14 +52,12 @@ components: {
 
     this.solutions = await solutionsService.getAllData();
     this.tags = this.getTags();
-    //this.tags.forEach( t => tagsFilter[t] = true); 
 
 },
 mounted(){
   window.bus.$on('addComment', commentObj => {
   
     this.solutions.filter( s => s.id == commentObj.id)[0].comments.push(commentObj.comment);
-    console.log(this.solutions.filter( s => s.id == commentObj.id)[0].comments)
     solutionsService.postComment(commentObj)
       .then(res => res.json())
       .then(res => console.log("postComment", res));
@@ -82,17 +82,8 @@ mounted(){
 
 },
 methods:{
-  getTags: function () {
-    /*
-    let set = new Set([]);
-    this.solutions.forEach(s => {
-     set = new Set([...set, ...s.tags])
-    });
-    return Array.from(set);
-    */
-  },
+
   sort: function(event){
-    console.log("sort()");
     let value = event.target.value;
     switch(value){
       case "Vorlesung: aufsteigend":
@@ -131,22 +122,26 @@ methods:{
           return b.likes-a.likes;
         });
         break;
+          case "Kommentare: aufsteigend":
+            this.solutions = this.solutions.sort((a, b) => {
+          return a.comments.length-b.comments.length;});
+        break;
+          case "Kommentare: absteigend":
+            this.solutions = this.solutions.sort((a, b) => {
+          return b.comments.length-a.comments.length;});
+        break;
     }
-
-/*
-        <option></option>
-        <option>Views: aufsteigend</option>
-        <option>Views: absteigend</option>
-        <option>Likes: aufsteigend</option>
-        <option>Likes: absteigend</option>
-        */
   }
  
 },
 computed:{
   filteredSolutions : function (){
-    return this.solutions.filter( s => s.titel.includes(this.searchText) || s.id.startsWith(this.searchText));
-  },
+    return this.solutions.filter( 
+      s => s.titel.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      s.id.startsWith(this.searchText) || 
+      this.searchText.split(" ").every( word => s.beschreibung.toLowerCase().includes(word.toLowerCase()) ||
+      this.searchText.split(" ").every(word => s.tags.map(t => t.toLowerCase()).includes(word.toLowerCase())))
+    )},
   solutionCount: function(){
     return this.filteredSolutions.length;
   },

@@ -88,28 +88,6 @@
     "likes": 0
   },
   {
-    "id": "4.4",
-    "titel": "Topsort (als WebApp)",
-    "subtitel": "Fibonaccci Funktion",
-    "vorlesung": "3. CSS 2.Teil",
-    "beschreibung": "Schreiben Sie in JavaScript eine Funktion topsort(), die eine topologische Sortierung berechnet.",
-    "tags": ["HTML", "CSS", "JS"],
-    "comments": [],
-    "view": 0,
-    "likes": 0
-  },
-  {
-    "id": "4.4",
-    "titel": "Topsort",
-    "subtitel": "Fibonaccci Funktion",
-    "vorlesung": "4. JavaScript",
-    "beschreibung": "Schreiben Sie in JavaScript eine Funktion topsort(), die eine topologische Sortierung berechnet.",
-    "tags": ["HTML", "CSS", "JS"],
-    "comments": [],
-    "view": 0,
-    "likes": 0
-  },
-  {
     "id": "6.2",
     "titel": "Textanalyse mit filter-map-reduce",
     "subtitel": "Funktionale Programmierung",
@@ -137,6 +115,17 @@
     "subtitel": "",
     "vorlesung": "7. DOM",
     "beschreibung": "Implementieren Sie die interaktive Anwendung Rednerliste mit Zeitmessung selbstständig in JavaScript durch Nutzung der DOM API und der Timer-Funktionen. Neue Redner sollen auf Knopfdruck hinzugefügt werden können. Deren Uhr wird dann sofort automatisch gestartet und alle anderen Uhren angehalten. Bei jedem Redner soll die individuelle, gemessene Redezeit sekundengenau angezeigt werden. Für jeden Redner soll es einen eigenen Start-/Stopp-Button geben. Es soll immer nur eine Uhr laufen. Angezeigt werden sollen die bisherigen Summenzeiten aller Redebeiträge der betreffenden Person. Suchen Sie eine möglichst kurze und elegante Lösung. Achten Sie gleichzeitig auf gute Usability: z.B. wenn die Eingabe mit einem Return beendet wird, soll der Button-Click nicht mehr erforderlich sein, usw.",
+    "tags": ["HTML", "CSS", "JS"],
+    "comments": [],
+    "view": 0,
+    "likes": 0
+  },
+  {
+    "id": "7.3",
+    "titel": "Topsort (als WebApp)",
+    "subtitel": "Fibonaccci Funktion",
+    "vorlesung": "7. DOM",
+    "beschreibung": "Schreiben Sie in JavaScript eine Funktion topsort(), die eine topologische Sortierung berechnet.",
     "tags": ["HTML", "CSS", "JS"],
     "comments": [],
     "view": 0,
@@ -192,17 +181,6 @@
     "subtitel": "",
     "vorlesung": "9. Vue",
     "beschreibung": "Schreiben Sie eine möglichst flexible Vue.js Single File Component für Menüs und wenden Sie diese in derselben Webseite zweimal an, einmal horizontal, das andere Mal vertikal.",
-    "tags": ["HTML", "CSS", "JS", "Vue.js"],
-    "comments": [],
-    "view": 0,
-    "likes": 0
-  },
-  {
-    "id": "9.3",
-    "titel": "Vue.js WWW-Navigator",
-    "subtitel": "",
-    "vorlesung": "9. Vue",
-    "beschreibung": "Schreiben Sie Ihren WWW-Navigator als SPA in Vue.js.",
     "tags": ["HTML", "CSS", "JS", "Vue.js"],
     "comments": [],
     "view": 0,
