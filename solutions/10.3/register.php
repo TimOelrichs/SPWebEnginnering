@@ -6,8 +6,8 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['passw
     $passwd = $_POST['password'];
     $repeated_passwd = $_POST['passwordRepeat'];
 
-    $file = './data/users.csv';
-    include "./helpers/users.php";
+    $file = '../common/data/users.csv';
+    include "../common/util/users.php";
     echo "<script> var errors = {};</script>";
     if (!userExists($_POST)) {
         if ($passwd == $repeated_passwd) {
