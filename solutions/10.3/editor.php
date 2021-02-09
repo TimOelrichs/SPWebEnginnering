@@ -345,6 +345,10 @@ $json = getAllData();
                     localStorage.removeItem("content");
                 }
             })
+            .catch(err => {
+                msg.innerText = "Content konnten nicht auf dem Server gespeichert werden.";
+                console.error(err);
+            })
 
     }
 
@@ -388,7 +392,10 @@ $json = getAllData();
                     window.location.href = "./preview.php";
                 }
             })
-            .catch(err => msg.innerText = "PreviewDaten konnten nicht auf dem Server gespeichert werden.")
+            .catch(err => {
+                msg.innerText = "PreviewDaten konnten nicht auf dem Server gespeichert werden.";
+                console.error(err);
+            })
 
     }
 

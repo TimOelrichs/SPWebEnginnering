@@ -210,10 +210,10 @@
   },
   {
     "id": "10.3",
-    "titel": "Login mit PHP",
+    "titel": "WWW-Navigator zum Content-Editor ausbauen",
     "subtitel": "",
     "vorlesung": "10. PHP",
-    "beschreibung": "Schreiben Sie eine sichere PHP-Lösung für Login, das die persistierten Registrierungsdaten aus der letzten Aufgabe nutzt.",
+    "beschreibung": "Bauen Sie Ihren WWW-Navigator zum Content-Editor aus, mit dem Sie weitere Inhalte hinzu fügen können, die persistent auf dem Server mittels PHP gespeichert werden. Schreiben Sie Ihre PHP-Scripte so, dass es zu keinen Nebenläufigkeitsartefakten kommen kann, egal wie viele Nutzer gleichzeitig editieren und speichern.\nSpeichern Sie die Inhalte Ihres WWW-Navigators auf dem Server www2.inf.h-brs.de. Erweitern Sie Ihren WWW-Navigator um eine Edit-Funktionalität, so dass Inhalte editiert und ergänzt werden können. Vermeiden Sie die Lost Update-Anomalie.\nSchützen Sie Ihre Inhalte mit einem Login.",
     "tags": ["HTML", "CSS", "JS", "PHP"],
     "comments": [],
     "view": 0,
