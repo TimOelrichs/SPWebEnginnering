@@ -2,6 +2,8 @@ var redner = {currentSpeaking: null, counter: 1};
 var timerId;
 let colors = ["#49A69C", "#F2F2F2", "#F2911B", "#D9B5A0", "#A66A5D"];
 
+const prozentbar = document.getElementById('prozent');
+
 window.onload = () => {
     document.getElementById("add").addEventListener('click', addRedner);
     document.getElementById("txtInput").addEventListener('keyup', (event) => {
@@ -18,39 +20,34 @@ function addRedner(){
         let id = redner.counter++;
         txt.value = "";
         redner[id] = {name, elapsedTime: 0};
-        
         card.innerHTML = `<i class="material-icons">face</i><h1>${name}</h1><h2 id="t${id}">00:00:00</h2><button id="b${id}"">Start</button>`
         document.getElementById("liste").appendChild(card);
         let btn = document.getElementById(`b${id}`);
         btn.addEventListener('click', () => startHandler(id))
-        addBarToChart(id);
-    
+        addToPercentBar(id);
 }
 
-function addBarToChart(id) {
-    let xmlns = "http://www.w3.org/2000/svg";
-
-    let chart = document.getElementById("chart");
-    //let g = document.createElement('g');
-    let g = document.createElementNS(xmlns, "g");
-    g.id = `bar${id}`;
-    //let rect = document.createElement('rect');
-    //g.appendChild(rect);
-    g.innerHTML = `<rect id='rect${id}' x="${(id*10) +50}" y="50" width="10" height="1"
-     fill='${colors[id % colors.length]}'/>`
-     
-    //rect.setAttribute('width', 40);
-    //rect.setAttribute('heigt', 19);
-    chart.appendChild(g);
+function addToPercentBar(id) {
+    let div = document.createElement('div');
+    div.style.width = 0;
+    div.style.backgroundColor = colors[id % colors.length];
+    div.classList.add("bar");
+    prozentbar.appendChild(div);
 }
 
-function updateBarHeight(id) {
-    let xmlns = "http://www.w3.org/2000/svg";
-    let bar = document.getElementById(`rect${id}`);
-    bar.setAttributeNS(xmlns, "height", redner[id].current / 1000)
+function updatePercent() {
+    let zeiten = [];
+    for (let index = 1; index < redner.counter; index++) {
+        zeiten.push(redner[index].current || redner[index].elapsedTime); 
+    }
+    let sum = zeiten.reduce((acc, t) => acc + t);
+  
+    let bars = document.querySelectorAll('.bar');
+    for (let index = 0; index < zeiten.length; index++) {
+        bars[index].style.width = Math.round(zeiten[index] * 100 / sum) + "%";
+    }
+
 }
-
-
 
 function startHandler(id){
     
@@ -89,5 +86,5 @@ function timer(id){
         r.current = r.elapsedTime;
     }
     document.getElementById(`t${id}`).innerText = new Date(r.current).toUTCString().split("1970")[1].split("GMT")[0];r.current;
-    updateBarHeight(id);
+    updatePercent();
 }
