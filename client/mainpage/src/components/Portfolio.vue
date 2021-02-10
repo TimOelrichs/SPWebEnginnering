@@ -51,7 +51,6 @@ components: {
   created: async function () {
 
     this.solutions = await solutionsService.getAllData();
-    this.tags = this.getTags();
 
 },
 mounted(){
@@ -60,24 +59,26 @@ mounted(){
     this.solutions.filter( s => s.id == commentObj.id)[0].comments.push(commentObj.comment);
     solutionsService.postComment(commentObj)
       .then(res => res.json())
-      .then(res => console.log("postComment", res));
+      .catch(err => console.error("postComment", err));
   })
 
   window.bus.$on('incView', id => {
       this.solutions.filter( s => s.id == id)[0].view++;
       solutionsService.incView(id)
       .then(res => res.text())
-      .then(res => console.log("incView", res));
+      .catch(err => console.error("incView", err));
   })
 
   window.bus.$on('solution-liked', id => {
       this.solutions.filter( s => s.id == id)[0].likes++;
-      solutionsService.incLike(id).then(res => console.log("incLike", res));
+      solutionsService.incLike(id)
+      .catch(err => console.error("incLike", err));
   })
 
    window.bus.$on('solution-disliked', id => {
       this.solutions.filter( s => s.id == id)[0].likes--;
-      solutionsService.decLike(id).then(res => console.log("decLike", res));
+      solutionsService.decLike(id)
+      .catch(err => console.error("decLike", err));
   })
 
 },
